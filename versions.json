@@ -1,1 +1,38 @@
-{"schema":1,"releases":[]}
+{
+  "schema": 1,
+  "releases": [
+    {
+      "version": "2.0.0",
+      "tag": "ak-v2.0.0",
+      "notes": "Primera vista previa del editor Rust de AK Screen.\n\nEdición multipista, títulos, efectos y cinco temas. Esta versión histórica todavía no incluye la integración de grabación de tutoriales y captura de interfaces de la versión 2.1.0.\n\nPaquetes: Windows x64, Linux x64 y macOS Intel/Apple Silicon. Incluyen licencias y atribuciones. Sin firma comercial.",
+      "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.0.0",
+      "date": "2026-10-08",
+      "assets": [
+        {
+          "platform": "linux-x64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.0.0/AKScreen-Linux-x64.tar.gz",
+          "size": 24177862,
+          "sha256": "5fc1f6d390d83d2cdc51ba7928e933b222c794ec8ecca512eadb8d513956d130"
+        },
+        {
+          "platform": "macos-arm64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.0.0/AKScreen-macOS-arm64.dmg",
+          "size": 21855867,
+          "sha256": "b937e3147e9a3d95c91ee5edc845237e754d3e5cb6e170141c7d0a1f636474cc"
+        },
+        {
+          "platform": "windows-x64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.0.0/AK%20Screen%20Setup.exe",
+          "size": 16700500,
+          "sha256": "ef9590b8581aba5c3e1832cd2b2db20df2c74e16a235f57d5b006e29b1888f76"
+        },
+        {
+          "platform": "macos-x64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.0.0/AKScreen-macOS-x64.dmg",
+          "size": 24924427,
+          "sha256": "957b853d12d5f0ce3ecb76d1c7449b968b7ec51d225d614f1db5dce5ec8318e4"
+        }
+      ]
+    }
+  ]
+}
