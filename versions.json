@@ -22,7 +22,7 @@
         },
         {
           "platform": "windows-x64",
-          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.0.0/AK%20Screen%20Setup.exe",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.0.0/AK.Screen.Setup.exe",
           "size": 16700500,
           "sha256": "ef9590b8581aba5c3e1832cd2b2db20df2c74e16a235f57d5b006e29b1888f76"
         },

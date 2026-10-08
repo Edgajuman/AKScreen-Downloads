@@ -35,7 +35,9 @@ jobs:
             for file in "$platform"/*; do
               name="$(basename "$file")"
               if [ "$name" = SHA256SUMS.txt ]; then name="$(basename "$platform")-SHA256SUMS.txt"; fi
+              if [ "$name" = "AK Screen Setup.exe" ]; then name="AKScreen-Windows-x64-Setup.exe"; fi
               cp "$file" "flat/$name"
+              if [[ "$name" == *SHA256SUMS.txt ]]; then sed -i 's/AK Screen Setup.exe/AKScreen-Windows-x64-Setup.exe/g' "flat/$name"; fi
             done
           done
           if gh release view "$tag" >/dev/null 2>&1; then
@@ -64,7 +66,7 @@ jobs:
             for p in platform.iterdir():
               if not p.name.endswith(('.exe','.dmg','.tar.gz')): continue
               name=platform.name.removeprefix('AKScreen-')
-              r['assets'].append({'platform':name,'url':f'https://github.com/{repo}/releases/download/{r["tag"]}/{urllib.parse.quote(p.name)}','size':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+              r['assets'].append({'platform':name,'url':f'https://github.com/{repo}/releases/download/{r["tag"]}/{urllib.parse.quote('AKScreen-Windows-x64-Setup.exe' if p.name=='AK Screen Setup.exe' else p.name)}','size':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
           catalogue=json.loads(pathlib.Path('versions.json').read_text())
           catalogue['releases']=[r]+[x for x in catalogue['releases'] if x['tag']!=r['tag']]
           catalogue['releases'].sort(key=lambda r:tuple(map(int,r['version'].split('.'))),reverse=True)
