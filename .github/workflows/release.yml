@@ -1,0 +1,81 @@
+name: Publish AK Screen installers
+on:
+  push:
+    branches: ['incoming/**']
+permissions:
+  contents: write
+concurrency:
+  group: publish-akscreen
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate distribution and publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, hashlib, re
+          r=json.loads(pathlib.Path('release.json').read_text())
+          if not re.fullmatch(r'ak-v\d+\.\d+\.\d+',r['tag']): raise SystemExit('Invalid release tag')
+          files=list(pathlib.Path('payload').glob('*/*'))
+          for p in files:
+            if not p.is_file() or p.stat().st_size>100_000_000: raise SystemExit('Invalid package')
+            if not (p.name.endswith(('.exe','.zip','.dmg','.tar.gz')) or p.name=='SHA256SUMS.txt'): raise SystemExit('Unexpected file')
+          if len(files)<8: raise SystemExit('Missing platform packages')
+          pathlib.Path('RELEASE.md').write_text(r['notes'])
+          pathlib.Path('tag.txt').write_text(r['tag'])
+          PY
+          tag="$(cat tag.txt)"
+          mkdir flat
+          for platform in payload/*; do
+            for file in "$platform"/*; do
+              name="$(basename "$file")"
+              if [ "$name" = SHA256SUMS.txt ]; then name="$(basename "$platform")-SHA256SUMS.txt"; fi
+              cp "$file" "flat/$name"
+            done
+          done
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" flat/* --clobber
+            gh release edit "$tag" --notes-file RELEASE.md
+          else
+            gh release create "$tag" flat/* --target main --title "AK Screen ${tag#ak-v}" --notes-file RELEASE.md
+          fi
+      - name: Update static version catalogue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          cp release.json /tmp/akscreen-release.json
+          cp -r payload /tmp/akscreen-payload
+          git fetch origin main
+          git checkout -B main origin/main
+          python3 - <<'PY'
+          import json, pathlib, hashlib, urllib.parse, datetime
+          r=json.loads(pathlib.Path('/tmp/akscreen-release.json').read_text())
+          repo='Edgajuman/AKScreen-Downloads'
+          r['url']=f'https://github.com/{repo}/releases/tag/{r["tag"]}'
+          r['date']=datetime.date.today().isoformat()
+          r['assets']=[]
+          for platform in pathlib.Path('/tmp/akscreen-payload').iterdir():
+            for p in platform.iterdir():
+              if not p.name.endswith(('.exe','.dmg','.tar.gz')): continue
+              name=platform.name.removeprefix('AKScreen-')
+              r['assets'].append({'platform':name,'url':f'https://github.com/{repo}/releases/download/{r["tag"]}/{urllib.parse.quote(p.name)}','size':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+          catalogue=json.loads(pathlib.Path('versions.json').read_text())
+          catalogue['releases']=[r]+[x for x in catalogue['releases'] if x['tag']!=r['tag']]
+          catalogue['releases'].sort(key=lambda r:tuple(map(int,r['version'].split('.'))),reverse=True)
+          pathlib.Path('versions.json').write_text(json.dumps(catalogue,ensure_ascii=False,indent=2)+'\n')
+          PY
+          git config user.name 'AK Screen Releases'
+          git config user.email 'noreply@users.noreply.github.com'
+          git add versions.json
+          git diff --cached --quiet || git commit -m "Publish $(cat /tmp/akscreen-release.json | python3 -c 'import json,sys; print(json.load(sys.stdin)["version"])')"
+          git push origin main
+      - name: Remove temporary installer branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: git push origin --delete '${{ github.ref_name }}'
