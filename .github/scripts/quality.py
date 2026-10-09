@@ -30,7 +30,7 @@ if mode == 'regressions':
     steps = [steps[0],
         ('Capas', ['cargo','test','--locked','--release','-p','filmcraft-engine','--lib','layers::tests']),
         ('Mate', ['cargo','test','--locked','--release','-p','filmcraft-render','--lib','unmult_removes']),
-        ('Audio', ['cargo','test','--locked','--release','-p','filmcraft-audio-dsp','--lib','fractional_taps_match']),
+        ('Audio', ['cargo','test','--locked','--release','-p','filmcraft-audio-dsp','--lib','effects::time::tests']),
         steps[3],
     ]
 if phase == 'lint':
