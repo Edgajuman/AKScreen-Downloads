@@ -1,0 +1,58 @@
+name: AK Screen - Protected Windows installation checks
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact private source revision
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: windows-2025
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate source revision
+        shell: pwsh
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: if ($env:SOURCE_SHA -notmatch '^[0-9a-f]{40}$') { throw 'An exact revision is required' }
+      - uses: actions/checkout@v4
+        with:
+          repository: Edgajuman/AKScreen
+          ref: ${{ inputs.source_sha }}
+          path: source
+          ssh-key: ${{ secrets.AKSCREEN_SOURCE_SSH_KEY }}
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify native registry and uninstall boundaries privately
+        shell: pwsh
+        run: |
+          @'
+          import os, subprocess, sys
+          from pathlib import Path
+          env = os.environ.copy()
+          env['CARGO_TERM_COLOR'] = 'never'
+          env['CARGO_INCREMENTAL'] = '0'
+          with (Path(env['RUNNER_TEMP']) / 'akscreen-build.log').open('wb') as log:
+              result = subprocess.run(['cargo', 'test', '--locked', '-p', 'filmcraft-platform', '--lib', 'installations::tests'], cwd='source', env=env, stdout=log, stderr=subprocess.STDOUT)
+          if result.returncode:
+              print('::error::Native installation checks failed; diagnostics encrypted for owner.')
+          sys.exit(result.returncode)
+          '@ | python -
+      - name: Encrypt diagnostics
+        if: always()
+        shell: pwsh
+        run: ./.github/scripts/seal-log.ps1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Diagnostics-windows-installations
+          path: ${{ runner.temp }}/akscreen-build.p7m
+          if-no-files-found: ignore
+          retention-days: 7
