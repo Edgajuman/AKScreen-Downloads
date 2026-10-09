@@ -1,0 +1,8 @@
+asset: startup-sakura-pulse.png
+title: Captura real de AK Screen 2.1.0
+author: AK Screen contributors
+source: original work; AKScreen.exe --demo
+license: MIT OR Apache-2.0; marca AK Screen autorizada por su propietario
+license-file: ../../README.md
+added: 2026-10-08 by Edgajuman
+notes: Interfaz nativa y contenido procedimental de demostración, sin archivos privados.

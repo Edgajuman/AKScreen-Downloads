@@ -34,6 +34,16 @@ grabar. Tus proyectos, capturas y eventos se guardan en tu dispositivo.
 
 [**Explorar el catálogo de temas →**](https://edgajuman.github.io/AK-Screen-Themes/)
 
+## El editor en uso
+
+Capturas reales de AK Screen 2.1 con contenido de demostración generado por la aplicación.
+
+![Editor con AK Midnight](assets/screenshots/editor-ak-midnight.png)
+
+| Sakura Pulse | Pantalla de carga personalizada |
+|---|---|
+| ![Editor con Sakura Pulse](assets/screenshots/editor-sakura-pulse.png) | ![Inicio con Sakura Pulse](assets/screenshots/startup-sakura-pulse.png) |
+
 ## Ejemplos de uso
 
 **Explicar una hoja de cálculo.** Mantén el clic al seleccionar una tabla: la cámara
