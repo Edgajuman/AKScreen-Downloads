@@ -22,6 +22,8 @@ steps = [
     ('Atribuciones', ['cargo', 'xtask', 'assets']),
     ('Portabilidad WASM', ['cargo', 'xtask', 'wasm']),
 ]
+if os.environ.get('AKSCREEN_CHECK_MODE') == 'compile':
+    steps = [steps[0], ('Tipos y destinos', ['cargo','check','--locked','--workspace','--all-targets'])]
 failed = []
 with (Path(os.environ['RUNNER_TEMP']) / 'akscreen-build.log').open('wb') as log:
     for name, command in steps:
