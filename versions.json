@@ -2,6 +2,40 @@
   "schema": 1,
   "releases": [
     {
+      "version": "2.1.0",
+      "tag": "ak-v2.1.0",
+      "notes": "Grabación de tutoriales y captura de interfaces integradas en AK Screen.\n\n- Captura de monitor, escritorio o región a 30 FPS objetivo, con pausa y atajos globales.\n- Cursor simulado, halo, clics y cámara como capas y animaciones editables. Zoom mantenido al arrastrar.\n- Texto mediante Ctrl+K configurable, con edición de fuente, fondo, posición y color.\n- Pausa, continuar y detener con clic del mouse; asa independiente para mover los controles flotantes.\n- Controles flotantes excluidos del video mediante Windows. En otros sistemas se utilizan atajos cuando la ocultación está activada.\n- Captura de controles accesibles de Windows como capas rasterizadas. Las ventanas sin accesibilidad se importan como imagen.\n- Proyectos locales, renombrado, recuperación y papelera.\n- Marketplace de temas revisados con vistas previas, recursos por autor y descargas verificadas. Iconos SVG y fuentes TTF/OTF nativos.\n- 38 colores de interfaz, medidas y colores de clips configurables; temas AK Midnight, Aurora Glass y Sakura Pulse.\n- Fondo del editor PNG/JPEG/GIF/WebP con opacidad ajustable y pantalla de carga personalizable.\n- Historial de versiones, búsqueda de novedades y descargas verificadas desde GitHub.\n- Instalación en carpetas independientes.\n\nmacOS requiere permisos de grabación de pantalla y accesibilidad. Linux: el registro global de acciones requiere una sesión X11; el soporte de captura en Wayland depende del escritorio. Los instaladores no tienen certificado comercial. Incluyen licencias y atribuciones.",
+      "sourceRevision": "451a653a549196ea980ca6a58be9aea78406a379",
+      "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.1.0",
+      "date": "2026-10-09",
+      "assets": [
+        {
+          "platform": "linux-x64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.1.0/AKScreen-Linux-x64.tar.gz",
+          "size": 27343287,
+          "sha256": "cb48e55c67d493b393526b20d72af3d17848373b509b1599900cc7cb8a0fb295"
+        },
+        {
+          "platform": "macos-arm64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.1.0/AKScreen-macOS-arm64.dmg",
+          "size": 25137862,
+          "sha256": "e9b97c8d1c3be0e7beb116ae13e95663a57c09cdcc8391f12743d5f752e34c79"
+        },
+        {
+          "platform": "macos-x64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.1.0/AKScreen-macOS-x64.dmg",
+          "size": 27549544,
+          "sha256": "14749f23ce3faee0f2d8cbbfb1788783c9e70ffc178fa1e0d6eeeba066f6e1b5"
+        },
+        {
+          "platform": "windows-x64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.1.0/AKScreen-Windows-x64-Setup.exe",
+          "size": 18379319,
+          "sha256": "b321cc8b2911b553b497838cfe42c40ff512ddfc7caa3ff3a504d76e56239fd8"
+        }
+      ]
+    },
+    {
       "version": "2.0.0",
       "tag": "ak-v2.0.0",
       "notes": "Primera vista previa del editor Rust de AK Screen.\n\nEdición multipista, títulos, efectos y cinco temas. Esta versión histórica todavía no incluye la integración de grabación de tutoriales y captura de interfaces de la versión 2.1.0.\n\nPaquetes: Windows x64, Linux x64 y macOS Intel/Apple Silicon. Incluyen licencias y atribuciones. Sin firma comercial.",
