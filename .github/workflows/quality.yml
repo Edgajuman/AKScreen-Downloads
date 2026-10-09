@@ -36,7 +36,7 @@ jobs:
       - name: Desktop libraries and external test oracle
         run: |
           sudo apt-get update
-          sudo apt-get install -y libasound2-dev libgtk-3-dev libxkbcommon-dev libwayland-dev libx11-dev libxi-dev libxtst-dev libxrandr-dev libxcursor-dev libxinerama-dev libgl1-mesa-dev libgbm-dev libpipewire-0.3-dev libspa-0.2-dev libxcb-randr0-dev libdbus-1-dev libclang-dev pkg-config ffmpeg
+          sudo apt-get install -y libasound2-dev libgtk-3-dev libxkbcommon-dev libwayland-dev libx11-dev libxi-dev libxtst-dev libxrandr-dev libxcursor-dev libxinerama-dev libgl1-mesa-dev libgbm-dev libpipewire-0.3-dev libspa-0.2-dev libxcb-randr0-dev libdbus-1-dev libclang-dev pkg-config ffmpeg mesa-vulkan-drivers fonts-noto-cjk
       - name: Pinned modern external codec oracle
         run: |
           oracle_name=ffmpeg-n9.0.2-23-g27b46f0fbc-linux64-gpl-9.0.tar.xz
