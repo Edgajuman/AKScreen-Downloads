@@ -1,0 +1,10 @@
+source/
+packages/
+metadata/
+release-assets/
+release-notes.txt
+__pycache__/
+*.pyc
+*.log
+*.pem
+*.p7m

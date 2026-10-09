@@ -1,0 +1,6 @@
+AK Screen brand assets
+
+The application owner supplied this icon and expressly authorized its use in
+AK Screen. No ownership, open-source licence, or permission for unrelated use
+is inferred. The brand asset is separate from the MIT / Apache-2.0 source code.
+Do not redistribute it as a third-party stock asset.

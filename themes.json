@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "themes": [
+    {
+      "schema": 1,
+      "id": "ak-midnight",
+      "name": "AK Midnight",
+      "base": "dark",
+      "colors": {
+        "accent": "#408CFF",
+        "background": "#0D1118",
+        "header": "#121925",
+        "panel": "#171F2D",
+        "tabs": "#121925",
+        "text": "#F3F6FC",
+        "secondary": "#ADBBD0",
+        "field": "#0E1520",
+        "border": "#33435B",
+        "selection": "#253F66",
+        "track": "#182334",
+        "trackAlternate": "#1E2B40",
+        "monitor": "#070A10",
+        "hover": "#2A486F",
+        "danger": "#FF657A"
+      }
+    }
+  ]
+}

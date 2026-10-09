@@ -1,0 +1,52 @@
+name: AK Screen - Protected full checks
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact revision in the private source repository
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate revision
+        shell: pwsh
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: if ($env:SOURCE_SHA -notmatch '^[0-9a-f]{40}$') { throw 'An exact commit SHA is required' }
+      - uses: actions/checkout@v4
+        with:
+          repository: Edgajuman/AKScreen
+          ref: ${{ inputs.source_sha }}
+          path: source
+          ssh-key: ${{ secrets.AKSCREEN_SOURCE_SSH_KEY }}
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+          targets: wasm32-unknown-unknown
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Desktop libraries and external test oracle
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2-dev libgtk-3-dev libxkbcommon-dev libwayland-dev libx11-dev libxi-dev libxtst-dev libxrandr-dev libxcursor-dev libxinerama-dev libgl1-mesa-dev libgbm-dev libpipewire-0.3-dev libspa-0.2-dev libxcb-randr0-dev libdbus-1-dev libclang-dev pkg-config ffmpeg
+      - name: Full checks (private diagnostics)
+        run: python .github/scripts/quality.py
+      - name: Encrypt diagnostics
+        if: always()
+        shell: pwsh
+        run: ./.github/scripts/seal-log.ps1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Diagnostics-full-checks
+          path: ${{ runner.temp }}/akscreen-build.p7m
+          retention-days: 7
+          if-no-files-found: ignore
