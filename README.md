@@ -22,8 +22,7 @@ AK Screen reúne captura de escritorio y edición multipista. El video, los clic
 el cursor, la cámara y los textos quedan en capas que puedes ajustar después de
 grabar. Tus proyectos, capturas y eventos se guardan en tu dispositivo.
 
-> **AK Screen 2.1.0 disponible:** [descargar para Windows, Linux y macOS](https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.1.0).
-> Incluye grabación de tutoriales, captura de interfaces y controles flotantes de pausa y detener corregidos.
+> **AK Screen 2.2 está en validación.** Añade composición por capas, objetos 3D, subtítulos locales, audio del sistema y atajos de edición configurables. La versión publicada más reciente está en [Releases](https://github.com/Edgajuman/AKScreen-Downloads/releases).
 
 | Captura | Edición | Personalización |
 |---|---|---|
@@ -36,9 +35,9 @@ grabar. Tus proyectos, capturas y eventos se guardan en tu dispositivo.
 
 ## El editor en uso
 
-Capturas reales de AK Screen 2.1 con contenido de demostración generado por la aplicación.
+Capturas reales de AK Screen 2.2 con AK Studio Pro y contenido de demostración generado por la aplicación.
 
-![Editor con AK Midnight](assets/screenshots/editor-ak-midnight.png)
+![Editor con AK Studio Pro](assets/screenshots/editor-ak-studio-pro.png)
 
 | Sakura Pulse | Pantalla de carga personalizada |
 |---|---|
@@ -46,7 +45,7 @@ Capturas reales de AK Screen 2.1 con contenido de demostración generado por la 
 
 El catálogo también está integrado en el editor, con vistas previas y descarga del paquete completo:
 
-![Catálogo integrado de temas](assets/screenshots/theme-catalog.png)
+![Catálogo integrado de temas](assets/screenshots/theme-catalog-2.2.png)
 
 ## Ejemplos de uso
 
@@ -69,6 +68,30 @@ se importan como una imagen completa.
 
 [Ver el tutorial de primeros pasos →](docs/PRIMEROS-PASOS.md)
 
+## Composición, motion y subtítulos
+
+En **Herramientas → Animación, capas y efectos…** puedes crear controles de capas,
+vincular clips, ajustar anclas, alinear y distribuir, y generar animaciones con
+fotogramas editables. La vista previa permite mover, escalar y girar una selección.
+Las capas 2.5D incluyen profundidad y perspectiva; el generador 3D ofrece cubos,
+esferas, planos, cilindros, pirámides y toros con material e iluminación.
+
+**Herramientas → Subtítulos automáticos…** transcribe una pista seleccionada o la
+secuencia. El modelo se descarga solo con tu consentimiento y se guarda en una
+caché compartida entre versiones; después funciona localmente. Revisa el resultado
+antes de insertarlo como subtítulos editables o exportarlo a SRT/VTT.
+
+**Configuración** reúne grabación, audio, cursor, preferencias del editor, atajos
+y apariencia. Arrastra las pestañas hacia el centro o los bordes para reorganizar
+los paneles y guarda tu espacio de trabajo. Los temas permiten cambiar la
+superficie, las líneas y la disposición mediante estilos nativos acotados.
+
+![Ajustes de grabación y audio](assets/screenshots/recording-settings-2.2.png)
+
+El sistema 3D actual es procedural: no importa modelos OBJ/glTF ni ofrece una
+escena compartida con sombras entre objetos. Las cámaras 2.5D se aplican por capa.
+La precisión de los subtítulos depende del modelo y del audio; requiere revisión.
+
 ## Descargas
 
 | Sistema | Paquete |
@@ -82,7 +105,7 @@ Encuentra cada paquete y sus sumas SHA-256 en [Releases](https://github.com/Edga
 Las versiones de Windows usan carpetas independientes y permiten elegir otra ruta.
 Conserva una copia del proyecto antes de abrirlo con una versión anterior.
 
-La captura tiene un objetivo de 30 FPS, sujeto al rendimiento del equipo. macOS
+La captura permite elegir entre 15 y 120 FPS, con 60 FPS por defecto. La velocidad efectiva depende del equipo y puede ser menor que la seleccionada. macOS
 requiere permisos de grabación de pantalla y accesibilidad. En Linux, el registro
 global de acciones requiere X11; la captura en Wayland depende del escritorio.
 Los instaladores no tienen certificado comercial y macOS usa firma ad hoc.
@@ -93,10 +116,10 @@ Los instaladores no tienen certificado comercial y macOS usa firma ad hoc.
 
 [**AK Midnight**](https://github.com/Edgajuman/AK-Screen-Themes/tree/main/themes/edgajuman/ak-midnight)
 combina fondos azul oscuro, texto claro y acento azul eléctrico. Su plantilla
-nativa enumera los 38 colores del editor, medidas y colores por tipo de clip.
+nativa sirve como punto de partida. [AK Studio Pro](https://github.com/Edgajuman/AK-Screen-Themes/tree/main/themes/edgajuman/ak-studio-pro) amplía el ejemplo a 47 colores, medidas, disposición de paneles, estilos nativos, 24 iconos, fuente local, fondo WebP y carga GIF.
 
-1. Abre **Temas** y selecciona **AK Midnight**.
-2. Usa **Exportar paleta** para crear tu variante.
+1. Abre **Configuración → Temas y catálogo** y selecciona **AK Midnight**.
+2. Usa **Exportar estilo y paneles** para crear tu variante.
 3. Cambia el nombre, el identificador y los colores en el JSON e impórtalo.
 
 [Guía de temas y publicación de catálogos →](docs/TEMAS.md)
