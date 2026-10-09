@@ -2,6 +2,51 @@
   "schema": 1,
   "releases": [
     {
+      "version": "2.2.0",
+      "tag": "ak-v2.2.0",
+      "notes": "AK Screen 2.2: edición, composición y grabación ampliadas.\n\n- Barra principal compacta con menús desplegables y ajustes globales visibles.\n- Paneles reordenables mediante arrastre; espacios de trabajo guardados y superficie continua.\n- Atajos configurables, controles de grabación y corrección de edición de valores decimales.\n- Grabación entre 15 y 120 FPS objetivo, calidad ajustable y audio del sistema y micrófono en pistas separadas. Audio del sistema disponible mediante WASAPI en Windows.\n- Subtítulos automáticos locales desde audio seleccionado o secuencia completa, con revisión antes de insertar. El modelo Whisper se descarga solo con autorización y se comparte entre versiones compatibles.\n- Transformación directa en la vista previa: mover, escalar y rotar.\n- Capas 2.5D, relaciones padre/hijo, controladores, anclajes, alineación y distribución.\n- Primitivas 3D procedurales con cámara, luz, materiales y profundidad dentro de cada objeto.\n- Presets de movimiento, fotogramas clave, cámara parallax, grano, Unmult y desenfoque de movimiento temporal.\n- Correcciones de tiempo en curvas y navegación de fotogramas clave; efectos renombrables con etiquetas de color.\n- Temas con 47 colores, métricas, disposición de paneles, estilos CSS nativos, iconos SVG, fuentes locales y fondos animados.\n- Tema avanzado AK Studio Pro en el catálogo de la comunidad.\n- Menús y cuadros largos con desplazamiento y altura adaptable.\n- Historial de versiones con detección de instalaciones, rutas, copias portables y desinstalación independiente; conserva proyectos, temas y modelos.\n- Descargas verificadas desde GitHub, con instalación por versión.\n\nLos FPS dependen del equipo y la región capturada. Linux requiere X11 para eventos globales; macOS requiere permisos de grabación y accesibilidad. La composición 3D actual usa primitivas procedurales: no importa escenas externas ni incluye un motor de geometría completo. No se incluyen modelos de voz ni FFmpeg en el instalador. Las licencias y atribuciones acompañan a los paquetes. Conserva una copia antes de abrir proyectos 2.2 en versiones anteriores.",
+      "sourceRevision": "61ea58fa430808f727cd04bde6be3ae9fb710232",
+      "baseSourceRevision": "36750987b6b1edbcf17e7fde443d05f1c7f623d8",
+      "platformSources": {
+        "windows-x64": "61ea58fa430808f727cd04bde6be3ae9fb710232",
+        "linux-x64": "36750987b6b1edbcf17e7fde443d05f1c7f623d8",
+        "macos-arm64": "36750987b6b1edbcf17e7fde443d05f1c7f623d8",
+        "macos-x64": "36750987b6b1edbcf17e7fde443d05f1c7f623d8"
+      },
+      "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.2.0",
+      "date": "2026-10-09",
+      "assets": [
+        {
+          "platform": "linux-x64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.2.0/AKScreen-Linux-x64.tar.gz",
+          "size": 28718232,
+          "sha256": "cd771cb21c87422ead50bd368f3e843d2e9895938cb7a7e3fdc8d09d115f3db2",
+          "sourceRevision": "36750987b6b1edbcf17e7fde443d05f1c7f623d8"
+        },
+        {
+          "platform": "macos-arm64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.2.0/AKScreen-macOS-arm64.dmg",
+          "size": 26443970,
+          "sha256": "2bc4f3ebf1a0554e4a18de38888728c93838dc37895ae6a519fec3baa84338d7",
+          "sourceRevision": "36750987b6b1edbcf17e7fde443d05f1c7f623d8"
+        },
+        {
+          "platform": "macos-x64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.2.0/AKScreen-macOS-x64.dmg",
+          "size": 29057700,
+          "sha256": "23e94578dec1b04c0080d120acc217557fc0472bbbdc3a46421111975d299caa",
+          "sourceRevision": "36750987b6b1edbcf17e7fde443d05f1c7f623d8"
+        },
+        {
+          "platform": "windows-x64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.2.0/AKScreen-Windows-x64-Setup.exe",
+          "size": 19278041,
+          "sha256": "1997674f8220f683933f1617e57ca50ab4e96ec123c22b5ec04fa4cc29c3f386",
+          "sourceRevision": "61ea58fa430808f727cd04bde6be3ae9fb710232"
+        }
+      ]
+    },
+    {
       "version": "2.1.0",
       "tag": "ak-v2.1.0",
       "notes": "Grabación de tutoriales y captura de interfaces integradas en AK Screen.\n\n- Captura de monitor, escritorio o región a 30 FPS objetivo, con pausa y atajos globales.\n- Cursor simulado, halo, clics y cámara como capas y animaciones editables. Zoom mantenido al arrastrar.\n- Texto mediante Ctrl+K configurable, con edición de fuente, fondo, posición y color.\n- Pausa, continuar y detener con clic del mouse; asa independiente para mover los controles flotantes.\n- Controles flotantes excluidos del video mediante Windows. En otros sistemas se utilizan atajos cuando la ocultación está activada.\n- Captura de controles accesibles de Windows como capas rasterizadas. Las ventanas sin accesibilidad se importan como imagen.\n- Proyectos locales, renombrado, recuperación y papelera.\n- Marketplace de temas revisados con vistas previas, recursos por autor y descargas verificadas. Iconos SVG y fuentes TTF/OTF nativos.\n- 38 colores de interfaz, medidas y colores de clips configurables; temas AK Midnight, Aurora Glass y Sakura Pulse.\n- Fondo del editor PNG/JPEG/GIF/WebP con opacidad ajustable y pantalla de carga personalizable.\n- Historial de versiones, búsqueda de novedades y descargas verificadas desde GitHub.\n- Instalación en carpetas independientes.\n\nmacOS requiere permisos de grabación de pantalla y accesibilidad. Linux: el registro global de acciones requiere una sesión X11; el soporte de captura en Wayland depende del escritorio. Los instaladores no tienen certificado comercial. Incluyen licencias y atribuciones.",
