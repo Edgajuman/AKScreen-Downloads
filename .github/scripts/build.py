@@ -1,6 +1,7 @@
 """Build private sources without exposing compiler output or source caches."""
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -29,7 +30,15 @@ if platform == "windows":
     steps.append(("Instalador", ["pwsh", "-NoProfile", "-File", "packaging/akscreen/windows.ps1", "-Target", target]))
 else:
     steps.append(("Paquete", ["bash", f"packaging/akscreen/{platform}.sh", target]))
+base_revision = None
 with log.open("wb") as output:
+    if os.environ.get("AKSCREEN_NATIVE_PATCH") == "true":
+        base_revision = json.loads(Path("base-metadata/release.json").read_text(encoding="utf-8"))["sourceRevision"]
+        if platform != "windows" or not re.fullmatch(r"[0-9a-f]{40}", base_revision):
+            raise SystemExit("Invalid native amendment")
+        diff = subprocess.run(["git", "diff", "--name-only", base_revision, "HEAD"], cwd=root, stdout=subprocess.PIPE, stderr=output, check=True)
+        if diff.stdout.decode().splitlines() != ["crates/platform/src/installations.rs"]:
+            raise SystemExit("This amendment must leave all shared and non-Windows source unchanged")
     for name, command in steps:
         print(f"{name}: en curso", flush=True)
         result = subprocess.run(command, cwd=root, env=env, stdout=output, stderr=subprocess.STDOUT)
@@ -40,5 +49,7 @@ with log.open("wb") as output:
         print(f"{name}: correcto", flush=True)
 metadata = json.loads((root / "packaging/akscreen/release.json").read_text(encoding="utf-8"))
 metadata["sourceRevision"] = os.environ["AKSCREEN_SOURCE_SHA"]
+if base_revision:
+    metadata["baseSourceRevision"] = base_revision
 Path("metadata").mkdir(exist_ok=True)
 Path("metadata/release.json").write_text(json.dumps(metadata, ensure_ascii=False, indent=2), encoding="utf-8")

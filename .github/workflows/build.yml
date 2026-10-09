@@ -14,8 +14,16 @@ on:
       build_run:
         description: Build run ID to publish (publish mode only)
         type: string
+      windows_only:
+        description: Amend Windows only when changes are isolated to its native installation module
+        type: boolean
+        default: false
+      base_build_run:
+        description: Validated base matrix for a Windows-only amendment
+        type: string
 permissions:
   contents: read
+  actions: read
 concurrency:
   group: akscreen-protected-${{ inputs.mode == 'publish' && 'publish' || inputs.source_sha }}
   cancel-in-progress: false
@@ -28,11 +36,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - {platform: windows, runner: windows-2025, target: x86_64-pc-windows-msvc, artifact: windows-x64}
-          - {platform: linux, runner: ubuntu-24.04, target: x86_64-unknown-linux-gnu, artifact: linux-x64}
-          - {platform: macos, runner: macos-15, target: aarch64-apple-darwin, artifact: macos-arm64}
-          - {platform: macos, runner: macos-15-intel, target: x86_64-apple-darwin, artifact: macos-x64}
+        include: ${{ fromJSON(inputs.windows_only && '[{"platform":"windows","runner":"windows-2025","target":"x86_64-pc-windows-msvc","artifact":"windows-x64"}]' || '[{"platform":"windows","runner":"windows-2025","target":"x86_64-pc-windows-msvc","artifact":"windows-x64"},{"platform":"linux","runner":"ubuntu-24.04","target":"x86_64-unknown-linux-gnu","artifact":"linux-x64"},{"platform":"macos","runner":"macos-15","target":"aarch64-apple-darwin","artifact":"macos-arm64"},{"platform":"macos","runner":"macos-15-intel","target":"x86_64-apple-darwin","artifact":"macos-x64"}]') }}
     steps:
       - uses: actions/checkout@v4
       - name: Validate source revision
@@ -46,6 +50,7 @@ jobs:
           repository: Edgajuman/AKScreen
           ref: ${{ inputs.source_sha }}
           path: source
+          fetch-depth: 0
           ssh-key: ${{ secrets.AKSCREEN_SOURCE_SSH_KEY }}
           persist-credentials: false
       - uses: dtolnay/rust-toolchain@stable
@@ -60,11 +65,19 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libasound2-dev libgtk-3-dev libxkbcommon-dev libwayland-dev libx11-dev libxi-dev libxtst-dev libxrandr-dev libxcursor-dev libxinerama-dev libgl1-mesa-dev libgbm-dev libpipewire-0.3-dev libspa-0.2-dev libxcb-randr0-dev libdbus-1-dev libclang-dev pkg-config
+      - uses: actions/download-artifact@v4
+        if: inputs.windows_only
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.base_build_run }}
+          name: Release-metadata
+          path: base-metadata
       - name: Compile, test and package (private diagnostics)
         env:
           AKSCREEN_TARGET: ${{ matrix.target }}
           AKSCREEN_PLATFORM: ${{ matrix.platform }}
           AKSCREEN_SOURCE_SHA: ${{ inputs.source_sha }}
+          AKSCREEN_NATIVE_PATCH: ${{ inputs.windows_only }}
         run: python .github/scripts/build.py
       - name: Encrypt diagnostics for the owner
         if: always()
@@ -108,6 +121,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           SOURCE_SHA: ${{ inputs.source_sha }}
           BUILD_RUN: ${{ inputs.build_run }}
+          BASE_BUILD_RUN: ${{ inputs.base_build_run }}
         run: |
           python3 - <<'PY'
           import os,json,subprocess,re
@@ -115,7 +129,26 @@ jobs:
           if not re.fullmatch(r'\d+',run): raise SystemExit('Invalid build run')
           r=json.loads(subprocess.check_output(['gh','api',f'repos/{os.environ["GITHUB_REPOSITORY"]}/actions/runs/{run}']))
           if r['conclusion']!='success' or r['path']!='.github/workflows/build.yml': raise SystemExit('A successful protected build is required')
+          base=os.environ.get('BASE_BUILD_RUN','')
+          if base:
+            if not re.fullmatch(r'\d+',base): raise SystemExit('Invalid base run')
+            b=json.loads(subprocess.check_output(['gh','api',f'repos/{os.environ["GITHUB_REPOSITORY"]}/actions/runs/{base}']))
+            if b['conclusion']!='success' or b['path']!='.github/workflows/build.yml': raise SystemExit('A successful base build is required')
           PY
+      - uses: actions/download-artifact@v4
+        if: inputs.base_build_run != ''
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.base_build_run }}
+          pattern: AKScreen-*
+          path: packages
+      - uses: actions/download-artifact@v4
+        if: inputs.base_build_run != ''
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.base_build_run }}
+          name: Release-metadata
+          path: base-metadata
       - uses: actions/download-artifact@v4
         with:
           github-token: ${{ github.token }}
@@ -134,4 +167,13 @@ jobs:
           SOURCE_SHA: ${{ inputs.source_sha }}
         run: |
           python3 -c 'import json,os; assert json.load(open("metadata/release.json"))["sourceRevision"] == os.environ["SOURCE_SHA"]'
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          if Path('base-metadata/release.json').is_file():
+            p=Path('metadata/release.json'); m=json.loads(p.read_text()); b=json.loads(Path('base-metadata/release.json').read_text())
+            assert m['baseSourceRevision']==b['sourceRevision'] and m['version']==b['version'] and m['tag']==b['tag']
+            m['platformSources']={p:(m['sourceRevision'] if p=='windows-x64' else b['sourceRevision']) for p in ['windows-x64','linux-x64','macos-arm64','macos-x64']}
+            p.write_text(json.dumps(m,ensure_ascii=False))
+          PY
           python3 .github/scripts/publish.py

@@ -42,7 +42,7 @@ for platform in sorted(expected):
         shutil.copy2(p, flat / name)
         normalized.append(f"{digest}  {name}\n")
         if name.endswith((".exe", ".dmg", ".tar.gz")):
-            assets.append({"platform": platform, "url": f"https://github.com/{repo}/releases/download/{tag}/{urllib.parse.quote(name)}", "size": p.stat().st_size, "sha256": digest})
+            assets.append({"platform": platform, "url": f"https://github.com/{repo}/releases/download/{tag}/{urllib.parse.quote(name)}", "size": p.stat().st_size, "sha256": digest, "sourceRevision": metadata.get("platformSources", {}).get(platform, metadata["sourceRevision"])})
     (flat / f"AKScreen-{platform}-SHA256SUMS.txt").write_text("".join(normalized), encoding="utf-8")
 Path("release-notes.txt").write_text(metadata["notes"], encoding="utf-8")
 paths = [str(p) for p in sorted(flat.iterdir())]
