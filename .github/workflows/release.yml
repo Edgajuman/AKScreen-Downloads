@@ -23,7 +23,7 @@ jobs:
           if not re.fullmatch(r'ak-v\d+\.\d+\.\d+',r['tag']): raise SystemExit('Invalid release tag')
           files=list(pathlib.Path('payload').glob('*/*'))
           for p in files:
-            if not p.is_file() or p.stat().st_size>100_000_000: raise SystemExit('Invalid package')
+            if not p.is_file() or p.stat().st_size>500_000_000: raise SystemExit('Invalid package')
             if not (p.name.endswith(('.exe','.zip','.dmg','.tar.gz')) or p.name=='SHA256SUMS.txt'): raise SystemExit('Unexpected file')
           if len(files)<8: raise SystemExit('Missing platform packages')
           pathlib.Path('RELEASE.md').write_text(r['notes'])

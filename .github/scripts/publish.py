@@ -29,7 +29,7 @@ for platform in sorted(expected):
         checks[name.lstrip("*")] = digest.lower()
     normalized = []
     for p in sorted(folder.iterdir()):
-        if not p.is_file() or p.stat().st_size > 100_000_000:
+        if not p.is_file() or p.stat().st_size > 500_000_000:
             raise SystemExit("Unexpected artifact")
         if p.name == "SHA256SUMS.txt":
             continue
