@@ -27,10 +27,12 @@ grabar. Tus proyectos, capturas y eventos se guardan en tu dispositivo.
 
 | Captura | Edición | Personalización |
 |---|---|---|
-| Monitor, escritorio o región | Clips, pistas y fotogramas clave | Cinco paletas y temas JSON |
-| Pausa y controles flotantes | Cursor y clics editables | Tema AK Midnight incluido |
-| Texto con atajo configurable | Cámara suave y seguimiento de arrastre | Carpeta y catálogo de temas configurables |
+| Monitor, escritorio o región | Clips, pistas y fotogramas clave | Marketplace con vistas previas |
+| Pausa y controles flotantes | Cursor y clics editables | SVG, fuentes y temas por autor |
+| Texto con atajo configurable | Cámara suave y seguimiento de arrastre | Fondos animados y pantalla de inicio |
 | Interfaces de Windows en capas de imagen | Títulos, audio, efectos y MP4 | Historial y descargas desde la campana |
+
+[**Explorar el catálogo de temas →**](https://edgajuman.github.io/AK-Screen-Themes/)
 
 ## Ejemplos de uso
 

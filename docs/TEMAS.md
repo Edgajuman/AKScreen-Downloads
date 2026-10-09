@@ -1,57 +1,37 @@
-# Temas de AK Screen
+# Temas y apariencia
 
-Abre **Temas → AK Midnight** para probar el ejemplo incluido. **Exportar tema**
-guarda los 15 colores editables de la paleta actual. Modifica el JSON, cambia
-`id` y `name`, e impórtalo con **Importar JSON**. Después selecciónalo en la lista.
+Abre **Temas** para seleccionar una paleta o entrar en el **Catálogo**. Pulsa **Actualizar**, revisa la vista previa y elige **Instalar y aplicar**. Sakura Pulse incluye fondos, iconos SVG y una fuente; Aurora Glass ofrece una paleta violeta; AK Midnight es la plantilla nativa de ejemplo.
 
-Los colores usan `#RRGGBB`. `schema: 1` identifica el formato y `base` puede ser
-`dark`, `medium`, `light`, `studioBlue` u `oled`. El archivo
-[`ak-midnight.json`](../themes/ak-midnight.json) es un ejemplo completo.
+[Catálogo web con descargas](https://edgajuman.github.io/AK-Screen-Themes/) · [Guía para crear un tema](https://github.com/Edgajuman/AK-Screen-Themes/blob/main/CONTRIBUTING.md) · [Todos los campos compatibles](https://github.com/Edgajuman/AK-Screen-Themes/blob/main/SCHEMA.md)
 
-| Campo de colors | Elemento |
-|---|---|
-| accent | Selección activa, foco y cabezal de reproducción |
-| background | Fondo general |
-| header | Cabeceras |
-| panel | Paneles y línea de tiempo |
-| tabs | Pestañas |
-| text | Texto principal |
-| secondary | Texto secundario e iconos |
-| field | Campos de edición |
-| border | Bordes y separadores |
-| selection | Filas seleccionadas |
-| track / trackAlternate | Fondos alternos de pistas |
-| monitor | Fondo del visor |
-| hover | Resaltado al pasar el mouse |
-| danger | Errores y acciones destructivas |
+## Archivos por autor
 
-La carpeta predeterminada es `Documentos/AK Screen/Temas`. Cambiarla en **Temas**
-permite usar otra ubicación sin cambiar el código. Los temas son datos, no plugins.
-
-## Publicar un catálogo
-
-En cualquier repositorio público de GitHub crea `themes.json` en `main`:
-
-```json
-{
-  "schema": 1,
-  "themes": [
-    {
-      "schema": 1,
-      "id": "mi-azul",
-      "name": "Mi azul",
-      "base": "dark",
-      "colors": { "accent": "#408CFF", "panel": "#171F2D" }
-    }
-  ]
-}
+```text
+Documentos/AK Screen/Temas/
+└── autor/
+    └── tema/
+        ├── theme.json
+        ├── preview.png
+        ├── info.md y licencias
+        └── assets/ (fondos, SVG y fuentes)
 ```
 
-Los colores omitidos heredan la paleta base. Configura `propietario/repositorio`
-en **Repositorio del catálogo** y pulsa **Importar catálogo de GitHub**.
-El catálogo inicial es `Edgajuman/AKScreen-Downloads`. Para trasladarlo más
-adelante, copia el JSON al nuevo repositorio y cambia ese campo en la aplicación.
-No hacen falta servidor, cuentas de usuario ni una API propia.
+Cada usuario del equipo usa su propia carpeta Documentos. Dentro de Temas, cada creador tiene su carpeta de autor. La instalación verifica tamaño y SHA-256 de los componentes; no ejecuta scripts. Los temas instalados funcionan sin conexión. Al reinstalar, el paquete anterior se conserva como copia de recuperación.
 
-Los paquetes con formatos, colores o campos no compatibles se rechazan.
-Mantén identificadores únicos; una importación con el mismo `id` actualiza ese tema.
+Puedes cambiar la ubicación y el repositorio en **Ubicación y repositorio**. El catálogo predeterminado es `Edgajuman/AK-Screen-Themes`. Para trasladarlo, copia el repositorio de temas y su workflow, publícalo y cambia el campo `propietario/repositorio`. El historial de versiones de la aplicación sigue separado en el repositorio de descargas.
+
+## Fondos y pantalla de inicio
+
+En **Fondo del editor y pantalla de inicio** selecciona PNG/JPEG/GIF/WebP y ajusta la opacidad de 0 a 100%. Los GIF y WebP animados conservan la animación dentro de límites de memoria. Puedes usar el fondo del tema o uno personal.
+
+La pantalla de carga admite un fondo independiente, una duración mínima de 0,5–6 segundos y un interruptor para desactivarla. Los fondos decoran la interfaz y no aparecen en el vídeo exportado.
+
+## Crear y compartir
+
+**Exportar paleta** guarda los 38 colores y medidas actuales en un JSON. Cambia id, nombre, autor y versión; añade recursos siguiendo la plantilla AK Midnight del repositorio de temas. Los SVG sustituyen iconos nativos; las TTF/OTF se cargan solo dentro de la aplicación y conservan fuentes de respaldo.
+
+Haz un fork de AK-Screen-Themes, añade `themes/tu-usuario/tu-tema/` y abre un pull request. Solo al aceptarlo en main se generan el catálogo, los ZIP y la página web. Los PR abiertos y los forks no aparecen en el catálogo oficial.
+
+Para instalar manualmente un ZIP de la web, extráelo y selecciona su theme.json con **Importar paquete / JSON**. No muevas el JSON sin sus carpetas de componentes.
+
+El formato anterior se convierte automáticamente. Las antiguas animaciones declarativas y texturas de widgets se conservan como recursos, pero todavía no se aplican en el editor Rust. La guía del esquema distingue las funciones activas.

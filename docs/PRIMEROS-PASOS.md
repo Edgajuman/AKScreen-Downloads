@@ -61,6 +61,10 @@ comprueba el SHA-256 antes de ofrecer **Abrir instalador**. Puedes conservar
 varias versiones de Windows eligiendo rutas diferentes. Haz una copia del
 proyecto antes de abrirlo con una versión anterior.
 
+## 7. Personalizar el editor
+
+En **Temas** instala un paquete del Catálogo o selecciona una paleta. **Fondo del editor y pantalla de inicio** permite elegir imágenes o animaciones GIF/WebP, ajustar opacidad y configurar la pantalla de carga. [Guía completa de temas](TEMAS.md).
+
 ## Requisitos prácticos
 
 - Windows x64; objetivo de captura de 30 FPS según el rendimiento del equipo.
