@@ -22,7 +22,7 @@ AK Screen reúne captura de escritorio y edición multipista. El video, los clic
 el cursor, la cámara y los textos quedan en capas que puedes ajustar después de
 grabar. Tus proyectos, capturas y eventos se guardan en tu dispositivo.
 
-> **AK Screen 2.2 está en validación.** Añade composición por capas, objetos 3D, subtítulos locales, audio del sistema y atajos de edición configurables. La versión publicada más reciente está en [Releases](https://github.com/Edgajuman/AKScreen-Downloads/releases).
+> **AK Screen 2.2 ya está disponible.** Incluye composición por capas, objetos 3D, subtítulos locales, audio del sistema, atajos configurables y administración de versiones instaladas. [Descargar AK Screen 2.2.0](https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.2.0).
 
 | Captura | Edición | Personalización |
 |---|---|---|
@@ -139,7 +139,7 @@ la búsqueda de novedades. Los instaladores se verifican mediante SHA-256 antes
 de ofrecer su apertura. Desde 2.2, el historial marca las instalaciones locales,
 muestra sus rutas y permite abrir el desinstalador de cada versión de Windows.
 La versión en uso requiere guardar y cerrar antes de retirarla. Las copias
-portables se administran desde su carpeta. No se necesita una cuenta para usar la aplicación.
+portables se administran desde su carpeta. El administrador reconoce instalaciones antiguas; para usar estos controles, abre AK Screen 2.2 o posterior. No se necesita una cuenta para usar la aplicación.
 
 Este repositorio publica instaladores, temas, guías y metadatos. El código fuente
 se administra en un repositorio privado. Las compilaciones leen la fuente con
