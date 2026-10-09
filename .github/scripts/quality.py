@@ -22,6 +22,7 @@ steps = [
     ('Atribuciones', ['cargo', 'xtask', 'assets']),
     ('Portabilidad WASM', ['cargo', 'xtask', 'wasm']),
 ]
+failed = []
 with (Path(os.environ['RUNNER_TEMP']) / 'akscreen-build.log').open('wb') as log:
     for name, command in steps:
         print(f'{name}: en curso', flush=True)
@@ -33,5 +34,8 @@ with (Path(os.environ['RUNNER_TEMP']) / 'akscreen-build.log').open('wb') as log:
         log.flush()
         if result.returncode:
             print(f'::error::{name} falló. Diagnóstico cifrado para el propietario.', flush=True)
-            sys.exit(result.returncode)
-        print(f'{name}: correcto', flush=True)
+            failed.append(name)
+        else:
+            print(f'{name}: correcto', flush=True)
+if failed:
+    sys.exit(1)
