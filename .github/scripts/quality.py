@@ -32,6 +32,8 @@ if mode == 'regressions':
         ('Mate', ['cargo','test','--locked','--release','-p','filmcraft-render','--lib','unmult_removes']),
         ('Audio', ['cargo','test','--locked','--release','-p','filmcraft-audio-dsp','--lib','effects::time::tests']),
         steps[3],
+        ("Atajos y botones del diálogo", ["cargo","test","--locked","--release","-p","filmcraft-ui-egui","--test","scripted","keyboard_shortcuts_dialog_assigns_live_and_cancel_restores"]),
+        ("Desplazamiento de menús", ["cargo","test","--locked","--release","-p","filmcraft-ui-egui","--lib","menus::scroll_tests"]),
     ]
 if phase == 'lint':
     steps = steps[:1] if mode == 'regressions' else steps[:2]
