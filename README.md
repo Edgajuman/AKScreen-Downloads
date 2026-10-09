@@ -73,6 +73,8 @@ Los instaladores no tienen certificado comercial y macOS usa firma ad hoc.
 
 ## Tu paleta, tu espacio de edición
 
+![Paleta de ejemplo AK Midnight](assets/ak-midnight-palette.svg)
+
 [**AK Midnight**](themes/ak-midnight.json) combina fondos azul oscuro, texto claro
 y acento azul eléctrico. Se incluye como ejemplo completo con 15 colores editables.
 

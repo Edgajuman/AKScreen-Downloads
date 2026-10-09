@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="260" viewBox="0 0 1200 260" role="img" aria-labelledby="title desc">
+  <title id="title">AK Midnight: paleta de ejemplo</title>
+  <desc id="desc">Fondo azul negro, paneles azul oscuro, acento azul eléctrico, texto blanco, bordes grises y errores coral.</desc>
+  <rect width="1200" height="260" rx="18" fill="#0D1118"/>
+  <rect x="1" y="1" width="1198" height="258" rx="17" fill="none" stroke="#33435B"/>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect x="32" y="32" width="5" height="42" rx="2" fill="#408CFF"/>
+    <text x="52" y="51" fill="#F3F6FC" font-size="25" font-weight="600">AK Midnight</text>
+    <text x="52" y="76" fill="#ADBBD0" font-size="14">Paleta de ejemplo · 15 colores editables · JSON</text>
+    <g transform="translate(32 111)">
+      <rect width="174" height="110" rx="10" fill="#171F2D" stroke="#33435B"/>
+      <circle cx="27" cy="27" r="10" fill="#0D1118" stroke="#33435B"/>
+      <text x="17" y="65" fill="#F3F6FC" font-size="14">Fondo</text><text x="17" y="88" fill="#ADBBD0" font-size="13">#0D1118</text>
+    </g>
+    <g transform="translate(224 111)">
+      <rect width="174" height="110" rx="10" fill="#171F2D" stroke="#33435B"/>
+      <circle cx="27" cy="27" r="10" fill="#171F2D" stroke="#ADBBD0"/>
+      <text x="17" y="65" fill="#F3F6FC" font-size="14">Paneles</text><text x="17" y="88" fill="#ADBBD0" font-size="13">#171F2D</text>
+    </g>
+    <g transform="translate(416 111)">
+      <rect width="174" height="110" rx="10" fill="#171F2D" stroke="#33435B"/>
+      <circle cx="27" cy="27" r="10" fill="#408CFF"/>
+      <text x="17" y="65" fill="#F3F6FC" font-size="14">Acento</text><text x="17" y="88" fill="#ADBBD0" font-size="13">#408CFF</text>
+    </g>
+    <g transform="translate(608 111)">
+      <rect width="174" height="110" rx="10" fill="#171F2D" stroke="#33435B"/>
+      <circle cx="27" cy="27" r="10" fill="#F3F6FC"/>
+      <text x="17" y="65" fill="#F3F6FC" font-size="14">Texto</text><text x="17" y="88" fill="#ADBBD0" font-size="13">#F3F6FC</text>
+    </g>
+    <g transform="translate(800 111)">
+      <rect width="174" height="110" rx="10" fill="#171F2D" stroke="#33435B"/>
+      <circle cx="27" cy="27" r="10" fill="#33435B" stroke="#ADBBD0"/>
+      <text x="17" y="65" fill="#F3F6FC" font-size="14">Bordes</text><text x="17" y="88" fill="#ADBBD0" font-size="13">#33435B</text>
+    </g>
+    <g transform="translate(992 111)">
+      <rect width="174" height="110" rx="10" fill="#171F2D" stroke="#33435B"/>
+      <circle cx="27" cy="27" r="10" fill="#FF657A"/>
+      <text x="17" y="65" fill="#F3F6FC" font-size="14">Errores</text><text x="17" y="88" fill="#ADBBD0" font-size="13">#FF657A</text>
+    </g>
+  </g>
+</svg>
