@@ -77,18 +77,22 @@ Los instaladores no tienen certificado comercial y macOS usa firma ad hoc.
 
 ![Paleta de ejemplo AK Midnight](assets/ak-midnight-palette.svg)
 
-[**AK Midnight**](themes/ak-midnight.json) combina fondos azul oscuro, texto claro
-y acento azul eléctrico. Se incluye como ejemplo completo con 15 colores editables.
+[**AK Midnight**](https://github.com/Edgajuman/AK-Screen-Themes/tree/main/themes/edgajuman/ak-midnight)
+combina fondos azul oscuro, texto claro y acento azul eléctrico. Su plantilla
+nativa enumera los 38 colores del editor, medidas y colores por tipo de clip.
 
 1. Abre **Temas** y selecciona **AK Midnight**.
-2. Usa **Exportar tema** para crear tu variante.
+2. Usa **Exportar paleta** para crear tu variante.
 3. Cambia el nombre, el identificador y los colores en el JSON e impórtalo.
 
 [Guía de temas y publicación de catálogos →](docs/TEMAS.md)
 
-El catálogo inicial es [themes.json](themes.json). Para moverlo a otro repositorio,
-copia ese archivo y cambia `propietario/repositorio` en la aplicación. Los temas
-son datos de color; no ejecutan código.
+El catálogo oficial está en [AK-Screen-Themes](https://github.com/Edgajuman/AK-Screen-Themes).
+Cada autor añade sus paquetes en `themes/autor/tema/` mediante fork y pull request.
+Los temas aceptados aparecen automáticamente en el editor y en el catálogo web,
+con vista previa y descarga. Cada PC conserva los paquetes en su propia carpeta
+local de temas. El repositorio y esa carpeta pueden cambiarse desde **Temas y
+apariencia**. Los paquetes admiten SVG, fuentes y fondos; no ejecutan código.
 
 ## Versiones y código
 
