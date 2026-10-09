@@ -9,7 +9,7 @@ on:
       check_mode:
         description: Full suite or quick type-check
         type: choice
-        options: [full, compile]
+        options: [full, compile, regressions]
         default: full
 permissions:
   contents: read
@@ -54,9 +54,44 @@ jobs:
           echo "$oracle_dir/bin" >> "$GITHUB_PATH"
           "$oracle_dir/bin/ffmpeg" -version
           "$oracle_dir/bin/ffmpeg" -hide_banner -demuxers 2>/dev/null | grep -w apv
-      - name: Full checks (private diagnostics)
+      - name: Format and lint (private diagnostics)
         env:
           AKSCREEN_CHECK_MODE: ${{ inputs.check_mode }}
+          AKSCREEN_CHECK_PHASE: lint
+        run: python .github/scripts/quality.py
+      - name: Encrypt lint diagnostics
+        if: always()
+        shell: pwsh
+        run: ./.github/scripts/seal-log.ps1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Diagnostics-lint
+          path: ${{ runner.temp }}/akscreen-build.p7m
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Tests and production performance (private diagnostics)
+        if: always() && inputs.check_mode != 'compile'
+        env:
+          AKSCREEN_CHECK_MODE: ${{ inputs.check_mode }}
+          AKSCREEN_CHECK_PHASE: tests
+        run: python .github/scripts/quality.py
+      - name: Encrypt test diagnostics
+        if: always()
+        shell: pwsh
+        run: ./.github/scripts/seal-log.ps1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Diagnostics-tests
+          path: ${{ runner.temp }}/akscreen-build.p7m
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Architecture, attribution and portability (private diagnostics)
+        if: always() && inputs.check_mode == 'full'
+        env:
+          AKSCREEN_CHECK_MODE: ${{ inputs.check_mode }}
+          AKSCREEN_CHECK_PHASE: rest
         run: python .github/scripts/quality.py
       - name: Encrypt diagnostics
         if: always()

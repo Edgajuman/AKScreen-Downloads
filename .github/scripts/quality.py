@@ -24,8 +24,23 @@ steps = [
 ]
 if os.environ.get('AKSCREEN_CHECK_MODE') == 'compile':
     steps = [steps[0], ('Tipos y destinos', ['cargo','check','--locked','--workspace','--all-targets'])]
+phase = os.environ.get('AKSCREEN_CHECK_PHASE', 'all')
+mode = os.environ.get('AKSCREEN_CHECK_MODE', 'full')
+if mode == 'regressions':
+    steps = [steps[0],
+        ('Capas', ['cargo','test','--locked','--release','-p','filmcraft-engine','--lib','layers::tests']),
+        ('Mate', ['cargo','test','--locked','--release','-p','filmcraft-render','--lib','unmult_removes']),
+        ('Audio', ['cargo','test','--locked','--release','-p','filmcraft-audio-dsp','--lib','fractional_taps_match']),
+        steps[3],
+    ]
+if phase == 'lint':
+    steps = steps[:1] if mode == 'regressions' else steps[:2]
+elif phase == 'tests':
+    steps = steps[1:] if mode == 'regressions' else steps[2:4]
+elif phase == 'rest':
+    steps = steps[4:] if mode == 'full' else []
 failed = []
-with (Path(os.environ['RUNNER_TEMP']) / 'akscreen-build.log').open('wb') as log:
+with (Path(os.environ['RUNNER_TEMP']) / 'akscreen-build.log').open('wb' if phase in ('all', 'lint') else 'ab') as log:
     for name, command in steps:
         print(f'{name}: en curso', flush=True)
         step_env = env.copy()
