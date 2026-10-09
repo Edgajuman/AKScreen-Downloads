@@ -25,6 +25,7 @@ steps = [
     ("Atribuciones", ["cargo", "xtask", "assets"]),
 ]
 if platform == "windows":
+    steps.append(("Instalaciones de Windows", ["cargo", "test", "--release", "--locked", "-p", "filmcraft-platform", "--lib", "--target", target, "installations::tests"]))
     steps.append(("Instalador", ["pwsh", "-NoProfile", "-File", "packaging/akscreen/windows.ps1", "-Target", target]))
 else:
     steps.append(("Paquete", ["bash", f"packaging/akscreen/{platform}.sh", target]))

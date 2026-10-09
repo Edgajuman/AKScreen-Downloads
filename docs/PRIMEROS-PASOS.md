@@ -83,6 +83,25 @@ Selecciona un clip en Programa para mover, escalar o rotar mediante sus controle
 
 **Configuración → Ajustes generales** abre las preferencias del editor. **Atajos de teclado** permite buscar acciones, detectar conflictos y reasignar combinaciones. Los atajos de pausa, parada y escritura se ajustan en Grabación.
 
+
+## Instalaciones y desinstalación
+
+Abre el icono de notificaciones para entrar en **Versiones y novedades**. Desde
+AK Screen 2.2, el historial muestra **Instalada**, **En uso** o **Portable**, junto
+con la carpeta de cada copia. **Actualizar instalaciones** consulta el equipo;
+en Windows también detecta versiones anteriores instaladas con el asistente,
+aunque el catálogo esté sin conexión.
+
+**Desinstalar esta versión…** abre únicamente su propio asistente. Para retirar
+la versión en uso, guarda el proyecto, termina las tareas y elige **Cerrar y
+desinstalar**. Se conservan los proyectos, temas y modelos compartidos. Una copia
+portable se retira desde **Abrir carpeta**; no tiene un desinstalador registrado.
+Los binarios antiguos no adquieren esta pantalla automáticamente: actualiza a
+2.2 para administrar también sus instalaciones.
+
+Los menús largos admiten la rueda del mouse; los cuadros de ajustes, temas,
+composición, subtítulos y versiones se ajustan a la altura de la ventana.
+
 ## Requisitos prácticos
 
 - Windows x64; captura entre 15 y 120 FPS objetivo, según el rendimiento del equipo.
