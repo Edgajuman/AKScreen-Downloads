@@ -136,7 +136,10 @@ apariencia**. Los paquetes admiten SVG, fuentes y fondos; no ejecutan código.
 La campana de AK Screen muestra cambios y descargas. El catálogo estático
 [versions.json](versions.json) se consulta por HTTPS desde GitHub; puedes desactivar
 la búsqueda de novedades. Los instaladores se verifican mediante SHA-256 antes
-de ofrecer su apertura. No se necesita una cuenta para usar la aplicación.
+de ofrecer su apertura. Desde 2.2, el historial marca las instalaciones locales,
+muestra sus rutas y permite abrir el desinstalador de cada versión de Windows.
+La versión en uso requiere guardar y cerrar antes de retirarla. Las copias
+portables se administran desde su carpeta. No se necesita una cuenta para usar la aplicación.
 
 Este repositorio publica instaladores, temas, guías y metadatos. El código fuente
 se administra en un repositorio privado. Las compilaciones leen la fuente con
