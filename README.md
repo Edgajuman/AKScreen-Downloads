@@ -22,8 +22,8 @@ AK Screen reúne captura de escritorio y edición multipista. El video, los clic
 el cursor, la cámara y los textos quedan en capas que puedes ajustar después de
 grabar. Tus proyectos, capturas y eventos se guardan en tu dispositivo.
 
-> **Estado de distribución:** la versión 2.1 está en validación. La release 2.0
-> es una vista previa histórica del editor; todavía no integra la grabación de tutoriales.
+> **AK Screen 2.1.0 disponible:** [descargar para Windows, Linux y macOS](https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.1.0).
+> Incluye grabación de tutoriales, captura de interfaces y controles flotantes de pausa y detener corregidos.
 
 | Captura | Edición | Personalización |
 |---|---|---|
