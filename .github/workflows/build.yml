@@ -1,0 +1,137 @@
+name: AK Screen - Protected build
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Build binaries or publish a previously validated build
+        type: choice
+        options: [build, publish]
+        default: build
+      source_sha:
+        description: Exact revision in the private source repository
+        required: true
+        type: string
+      build_run:
+        description: Build run ID to publish (publish mode only)
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: akscreen-protected-${{ inputs.mode }}
+  cancel-in-progress: false
+jobs:
+  build:
+    if: inputs.mode == 'build'
+    name: ${{ matrix.artifact }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {platform: windows, runner: windows-2025, target: x86_64-pc-windows-msvc, artifact: windows-x64}
+          - {platform: linux, runner: ubuntu-24.04, target: x86_64-unknown-linux-gnu, artifact: linux-x64}
+          - {platform: macos, runner: macos-15, target: aarch64-apple-darwin, artifact: macos-arm64}
+          - {platform: macos, runner: macos-15-intel, target: x86_64-apple-darwin, artifact: macos-x64}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate source revision
+        shell: pwsh
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: if ($env:SOURCE_SHA -notmatch '^[0-9a-f]{40}$') { throw 'An exact commit SHA is required' }
+      - name: Read private source
+        uses: actions/checkout@v4
+        with:
+          repository: Edgajuman/AKScreen
+          ref: ${{ inputs.source_sha }}
+          path: source
+          ssh-key: ${{ secrets.AKSCREEN_SOURCE_SSH_KEY }}
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+          targets: ${{ matrix.target }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Linux capture libraries
+        if: matrix.platform == 'linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2-dev libgtk-3-dev libxkbcommon-dev libwayland-dev libx11-dev libxi-dev libxtst-dev libxrandr-dev libxcursor-dev libxinerama-dev libgl1-mesa-dev libgbm-dev libpipewire-0.3-dev libspa-0.2-dev libxcb-randr0-dev libdbus-1-dev libclang-dev pkg-config
+      - name: Compile, test and package (private diagnostics)
+        env:
+          AKSCREEN_TARGET: ${{ matrix.target }}
+          AKSCREEN_PLATFORM: ${{ matrix.platform }}
+          AKSCREEN_SOURCE_SHA: ${{ inputs.source_sha }}
+        run: python .github/scripts/build.py
+      - name: Encrypt diagnostics for the owner
+        if: always()
+        shell: pwsh
+        run: ./.github/scripts/seal-log.ps1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Diagnostics-${{ matrix.artifact }}
+          path: ${{ runner.temp }}/akscreen-build.p7m
+          if-no-files-found: ignore
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        with:
+          name: AKScreen-${{ matrix.artifact }}
+          path: |
+            source/dist/akscreen/*.exe
+            source/dist/akscreen/*.zip
+            source/dist/akscreen/*.dmg
+            source/dist/akscreen/*.tar.gz
+            source/dist/akscreen/SHA256SUMS.txt
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: matrix.platform == 'windows'
+        with:
+          name: Release-metadata
+          path: metadata/release.json
+          retention-days: 7
+  publish:
+    if: inputs.mode == 'publish'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate successful build
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_SHA: ${{ inputs.source_sha }}
+          BUILD_RUN: ${{ inputs.build_run }}
+        run: |
+          python3 - <<'PY'
+          import os,json,subprocess,re
+          run=os.environ['BUILD_RUN']
+          if not re.fullmatch(r'\d+',run): raise SystemExit('Invalid build run')
+          r=json.loads(subprocess.check_output(['gh','api',f'repos/{os.environ["GITHUB_REPOSITORY"]}/actions/runs/{run}']))
+          if r['conclusion']!='success' or r['path']!='.github/workflows/build.yml': raise SystemExit('A successful protected build is required')
+          PY
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.build_run }}
+          pattern: AKScreen-*
+          path: packages
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.build_run }}
+          name: Release-metadata
+          path: metadata
+      - name: Publish verified installers and static catalogue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          python3 -c 'import json,os; assert json.load(open("metadata/release.json"))["sourceRevision"] == os.environ["SOURCE_SHA"]'
+          python3 .github/scripts/publish.py
