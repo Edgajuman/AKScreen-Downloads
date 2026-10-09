@@ -14,7 +14,7 @@ env['CARGO_PROFILE_RELEASE_CODEGEN_UNITS'] = '16'
 steps = [
     ('Formato', ['cargo', 'fmt', '--all', '--', '--check']),
     ('Clippy', ['cargo', 'clippy', '--locked', '--workspace', '--all-targets', '--release', '--', '-D', 'warnings']),
-    ('Pruebas del motor', ['cargo', 'test', '--locked', '--workspace', '--release']),
+    ('Pruebas del motor', ['cargo', 'test', '--locked', '--workspace', '--release', '--no-fail-fast']),
     ('Arquitectura', ['cargo', 'xtask', 'layers']),
     ('Atribuciones', ['cargo', 'xtask', 'assets']),
     ('Portabilidad WASM', ['cargo', 'xtask', 'wasm']),
