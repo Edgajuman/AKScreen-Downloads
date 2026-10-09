@@ -17,7 +17,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: akscreen-protected-${{ inputs.mode }}
+  group: akscreen-protected-${{ inputs.mode == 'publish' && 'publish' || inputs.source_sha }}
   cancel-in-progress: false
 jobs:
   build:
