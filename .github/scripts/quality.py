@@ -7,6 +7,10 @@ import sys
 env = os.environ.copy()
 env['CARGO_INCREMENTAL'] = '0'
 env['CARGO_TERM_COLOR'] = 'never'
+# Keep optimized tests without repeating cross-crate LTO for every test executable.
+# Production installers retain the source repository's thin-LTO release profile.
+env['CARGO_PROFILE_RELEASE_LTO'] = 'off'
+env['CARGO_PROFILE_RELEASE_CODEGEN_UNITS'] = '16'
 steps = [
     ('Formato', ['cargo', 'fmt', '--all', '--', '--check']),
     ('Clippy', ['cargo', 'clippy', '--locked', '--workspace', '--all-targets', '--release', '--', '-D', 'warnings']),
