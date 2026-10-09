@@ -44,6 +44,10 @@ Capturas reales de AK Screen 2.1 con contenido de demostración generado por la 
 |---|---|
 | ![Editor con Sakura Pulse](assets/screenshots/editor-sakura-pulse.png) | ![Inicio con Sakura Pulse](assets/screenshots/startup-sakura-pulse.png) |
 
+El catálogo también está integrado en el editor, con vistas previas y descarga del paquete completo:
+
+![Catálogo integrado de temas](assets/screenshots/theme-catalog.png)
+
 ## Ejemplos de uso
 
 **Explicar una hoja de cálculo.** Mantén el clic al seleccionar una tabla: la cámara
