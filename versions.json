@@ -4,51 +4,40 @@
     {
       "version": "2.3.0",
       "tag": "ak-v2.3.0",
-      "date": "2026-10-09",
-      "notes": "AK Screen 2.3.0 ya está publicada para Windows x64 y macOS. Las compilaciones disponibles incluyen nuevas funciones de extensiones, composición y avisos.\n\n## Descargas listas\n\n- **Windows x64 — instalador:** [AKScreen-Windows-x64-Setup.exe](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-Windows-x64-Setup.exe)\n- **Windows x64 — portable:** [AKScreen-Windows-x64.zip](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-Windows-x64.zip)\n- **macOS Apple Silicon:** [AKScreen-macOS-arm64.dmg](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-macOS-arm64.dmg)\n- **macOS Intel:** [AKScreen-macOS-x64.dmg](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-macOS-x64.dmg)\n\nWindows se instaló y probó en el equipo de desarrollo: grabación, pausa, exportación MP4, audio de sistema y temas. Los paquetes de macOS pasaron las pruebas de escritorio y temas en CI.\n\n## En desarrollo\n\n**Linux x64:** el control de calidad completo de CI falló, por lo que su compilación no se ofrece en esta versión. La retomaremos y publicaremos cuando pase la validación. Este fallo no bloquea los paquetes verificados de Windows y macOS.\n\n## Novedades\n\n- Catálogo de extensiones firmado con widgets, herramientas y componentes WebAssembly restringidos.\n- Instalación, actualización, reversión y desinstalación de extensiones conservando datos, con borrado opcional.\n- Chat AI con claves propias para OpenAI, OpenRouter, Gemini, Claude y Grok.\n- Rotación X/Y/Z, profundidad y cámara compartida 2D/3D para capas.\n- Texto con degradados, animación por caracteres y controles tipográficos.\n- Al cerrar proyectos: guardar, descartar o cancelar.\n- Campana de anuncios y actualizaciones firmados con Markdown y medios.\n\nEl chat requiere claves de los proveedores y conexión, y no ejecuta acciones en el editor. La composición 3D transforma planos de capas; no es un motor general de geometría 3D. Conserva copias de tus proyectos antes de abrirlos en versiones anteriores.\n\n## Integridad\n\n[SHA256SUMS.txt](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/SHA256SUMS.txt) contiene los hashes de los instaladores. [VALIDATION.json](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/VALIDATION.json) registra el commit, las pruebas por plataforma y los hashes publicados.",
+      "notes": "AK Screen 2.3: extensiones, composición y novedades.\n\n- Catálogo firmado, widgets y herramientas declarativas, componentes WebAssembly aislados, permisos y atajos.\n- Borrado opcional de datos y claves con confirmación.\n- Versiones independientes de extensiones: actualización, reversión y desinstalación conservan datos y realizan copias al cambiar de versión.\n- Ejemplos de notas, checklist, títulos animados, cámara y acabado.\n- Chat AI con OpenAI, OpenRouter, Gemini, Claude y Grok; claves propias en el almacén de credenciales del sistema. Resumen del proyecto y fotograma opcionales. El asistente no ejecuta acciones.\n- Rotación X/Y/Z y profundidad en capas existentes. Cámara compartida 2D/3D con fotogramas clave y controles en la vista previa.\n- Texto con degradados, animación por caracteres y controles tipográficos.\n- Enlaces de documentación, repositorios y navegador corregidos.\n- Al cerrar: Guardar, No guardar o Cancelar.\n- Campana con anuncios firmados, Markdown, imágenes, GIF y video. Contenido descargado disponible sin conexión.\n- Repositorio de extensiones comunitarias y canal de administración privado.\n\nNo incluye claves de API ni modelos de voz. Los proveedores de IA requieren conexión y pueden cobrar por uso. El visor de videos de los avisos reproduce sin audio. La composición transforma planos de capas; no es un motor general de geometría 3D. Los componentes externos tienen límites de memoria e instrucciones; el aislamiento reduce riesgos y requiere revisión y mantenimiento. Conserva copias de proyectos antes de abrirlos en versiones anteriores.\r\n- Actualización de mantenimiento para 2.3.0: gizmo de transformación 3D con ejes y aros, controles 3D y gráficas en Effect Controls, previsualización visual al pasar por efectos y widgets ampliados de cámara, acabado, títulos, notas y checklist.\n- Nuevos widgets integrados: Audio Workbench para diálogo, mezcla y reparación de canales; Color Workbench para looks, profundidad y composición; Motion Kit para parallax 3D, cámara y títulos cinéticos.\n- Cámara, acabado, títulos, notas y checklist se amplían y actualizan conservando el estado local y los permisos ya concedidos.",
+      "sourceRevision": "9786134399923fc3222a711457fada2af0c1a662",
       "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.3.0",
-      "sourceRevision": "7679aaee0f87625a5281915a201ec2fa9684f392",
-      "platformSources": {
-        "windows-x64": "7679aaee0f87625a5281915a201ec2fa9684f392",
-        "macos-arm64": "7679aaee0f87625a5281915a201ec2fa9684f392",
-        "macos-x64": "7679aaee0f87625a5281915a201ec2fa9684f392"
-      },
+      "date": "2026-10-10",
       "assets": [
         {
-          "platform": "windows-x64",
-          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-Windows-x64-Setup.exe",
-          "size": 23134140,
-          "sha256": "4d80ba43a448da8c77e4d9058c4d65b9435c8d68e25c5e87939f42c0d5b59248",
-          "sourceRevision": "7679aaee0f87625a5281915a201ec2fa9684f392"
-        },
-        {
-          "platform": "windows-x64-portable",
-          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-Windows-x64.zip",
-          "size": 31991004,
-          "sha256": "57369fc88c23dd64ccbba5ac422db84c1e8b51f1dddc580418fd3336939dabc9",
-          "sourceRevision": "7679aaee0f87625a5281915a201ec2fa9684f392"
+          "platform": "linux-x64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-Linux-x64.tar.gz",
+          "size": 34747934,
+          "sha256": "5bf03bb5a6a71ead587880d8861394a6343fee6b3bdfc84d887bff0eb4d1e15b",
+          "sourceRevision": "9786134399923fc3222a711457fada2af0c1a662"
         },
         {
           "platform": "macos-arm64",
           "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-macOS-arm64.dmg",
-          "size": 31734323,
-          "sha256": "b861e29307973468e5844c9d2e140a464516f9af29f376d8a5aa4c9d3c40aa77",
-          "sourceRevision": "7679aaee0f87625a5281915a201ec2fa9684f392"
+          "size": 31765806,
+          "sha256": "7681db887ef1e8067550d89cb066ce2acc7091632178401aa46d6658e258fab8",
+          "sourceRevision": "9786134399923fc3222a711457fada2af0c1a662"
         },
         {
           "platform": "macos-x64",
           "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-macOS-x64.dmg",
-          "size": 36199487,
-          "sha256": "e56504b21b77b7b4130cd43e02f69fee0b2a24939293d11fd3e52ef5469f2592",
-          "sourceRevision": "7679aaee0f87625a5281915a201ec2fa9684f392"
+          "size": 36231483,
+          "sha256": "7ae4ee7d3230a8cf6b1f6f8fcba5617f27cf49e99318d7f034160de4f6618868",
+          "sourceRevision": "9786134399923fc3222a711457fada2af0c1a662"
+        },
+        {
+          "platform": "windows-x64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-Windows-x64-Setup.exe",
+          "size": 23153876,
+          "sha256": "96d4a663094382540ab3b9eaab3131602fedc8ddbf6e5b34fc8016edcbc55b5e",
+          "sourceRevision": "9786134399923fc3222a711457fada2af0c1a662"
         }
-      ],
-      "platformStatus": {
-        "windows-x64": "available",
-        "macos-arm64": "available",
-        "macos-x64": "available",
-        "linux-x64": "in development: full CI quality checks failed; package withheld"
-      }
+      ]
     },
     {
       "version": "2.2.0",
