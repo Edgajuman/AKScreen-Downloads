@@ -1,5 +1,7 @@
 # De una grabación a un tutorial
 
+> **Descargas AK Screen 2.3.0:** Windows x64 y macOS (Apple Silicon e Intel) ya están disponibles en [GitHub Releases](https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.3.0). Linux x64 permanece **En desarrollo** mientras se resuelve la validación de CI.
+
 ## 1. Grabar
 
 Abre **Capturar → Grabar tutorial**, escribe el nombre y elige un monitor, el escritorio
@@ -75,7 +77,7 @@ Abre **Herramientas → Subtítulos automáticos**. Elige toda la secuencia, una
 
 En **Herramientas → Animación, capas y efectos** aplica presets de entrada, giro, pulso o rebote a los clips seleccionados. Puedes modificar sus fotogramas, duración y curva. Vincula capas a un control para animarlas juntas, elige anclaje o alinea la selección.
 
-**Composición 2.5D** coordina profundidad, giro y cámara para parallax. Las formas 3D procedurales se crean desde Efectos y admiten material, luz y animación. El modo 3D actual trabaja con primitivas; no importa escenas externas ni incluye sombras entre objetos.
+**Composición 2.5D** coordina profundidad, giro y cámara para parallax. Desde 2.3 puedes rotar las capas existentes en X/Y/Z y utilizar una cámara compartida 2D/3D con fotogramas clave. Las formas 3D procedurales se crean desde Efectos y admiten material, luz y animación. La composición transforma planos de capas; no importa escenas externas ni incluye sombras entre objetos.
 
 Selecciona un clip en Programa para mover, escalar o rotar mediante sus controles. Arrastra las pestañas de los paneles para reagruparlos o dividir el espacio. Guarda o restaura la disposición desde Espacios de trabajo.
 
@@ -115,3 +117,39 @@ composición, subtítulos y versiones se ajustan a la altura de la ventana.
 
 La edición y la grabación funcionan localmente. Las consultas de versiones,
 descargas y catálogos de temas opcionales necesitan acceso HTTPS a GitHub.
+
+## Extensiones y widgets · 2.3
+
+Abre **Herramientas → Extensiones** y actualiza el catálogo. Selecciona una
+herramienta, instala su versión y revisa los permisos antes de activarla. Los
+widgets se muestran en el panel de extensiones o como ventanas flotantes.
+También puedes importar un `.akext` local.
+
+El catálogo incluye notas, checklist de tutorial, títulos animados, herramientas
+de cámara, acabado, Chat AI y WASM Lab. Encuentra sus ejemplos y el SDK en
+[AK-Screen-Extensions](https://github.com/Edgajuman/AK-Screen-Extensions).
+
+Para Chat AI elige proveedor y modelo, guarda tu propia clave y escribe la
+consulta. El resumen del proyecto y el fotograma son opcionales y se envían
+solo cuando los habilitas. El asistente no modifica el proyecto. Las claves
+usan el almacén de credenciales del sistema; el proveedor necesita Internet.
+
+La actualización conserva los datos y crea una copia. Puedes conservar varias
+versiones y activar una anterior. **Desinstalar versión** conserva datos y
+claves por defecto; marca sus opciones solo si deseas eliminarlos.
+**Borrar datos…** permite restablecer una extensión incluso después de quitar
+sus paquetes. El borrado afecta a todas sus versiones y requiere confirmación.
+
+## Texto, cierre y novedades · 2.3
+
+Selecciona el texto en la línea de tiempo para editarlo en los controles de
+gráficos. Además de fuente, tamaño, espaciado, fondo y contorno, puedes usar
+degradados y animación por caracteres. Sus propiedades se guardan en el proyecto.
+
+Al cerrar con cambios, elige **Guardar**, **No guardar** o **Cancelar**. No guardar
+descarta también la recuperación pendiente de ese proyecto. No abras proyectos
+importantes en una versión anterior sin conservar una copia.
+
+La campana muestra anuncios firmados con Markdown y medios verificados. Los
+videos de avisos se reproducen sin audio. El contenido ya descargado permanece
+disponible sin conexión. Los anuncios no ejecutan HTML ni JavaScript.

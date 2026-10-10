@@ -2,6 +2,55 @@
   "schema": 1,
   "releases": [
     {
+      "version": "2.3.0",
+      "tag": "ak-v2.3.0",
+      "date": "2026-10-09",
+      "notes": "AK Screen 2.3.0 ya está publicada para Windows x64 y macOS. Las compilaciones disponibles incluyen nuevas funciones de extensiones, composición y avisos.\n\n## Descargas listas\n\n- **Windows x64 — instalador:** [AKScreen-Windows-x64-Setup.exe](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-Windows-x64-Setup.exe)\n- **Windows x64 — portable:** [AKScreen-Windows-x64.zip](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-Windows-x64.zip)\n- **macOS Apple Silicon:** [AKScreen-macOS-arm64.dmg](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-macOS-arm64.dmg)\n- **macOS Intel:** [AKScreen-macOS-x64.dmg](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-macOS-x64.dmg)\n\nWindows se instaló y probó en el equipo de desarrollo: grabación, pausa, exportación MP4, audio de sistema y temas. Los paquetes de macOS pasaron las pruebas de escritorio y temas en CI.\n\n## En desarrollo\n\n**Linux x64:** el control de calidad completo de CI falló, por lo que su compilación no se ofrece en esta versión. La retomaremos y publicaremos cuando pase la validación. Este fallo no bloquea los paquetes verificados de Windows y macOS.\n\n## Novedades\n\n- Catálogo de extensiones firmado con widgets, herramientas y componentes WebAssembly restringidos.\n- Instalación, actualización, reversión y desinstalación de extensiones conservando datos, con borrado opcional.\n- Chat AI con claves propias para OpenAI, OpenRouter, Gemini, Claude y Grok.\n- Rotación X/Y/Z, profundidad y cámara compartida 2D/3D para capas.\n- Texto con degradados, animación por caracteres y controles tipográficos.\n- Al cerrar proyectos: guardar, descartar o cancelar.\n- Campana de anuncios y actualizaciones firmados con Markdown y medios.\n\nEl chat requiere claves de los proveedores y conexión, y no ejecuta acciones en el editor. La composición 3D transforma planos de capas; no es un motor general de geometría 3D. Conserva copias de tus proyectos antes de abrirlos en versiones anteriores.\n\n## Integridad\n\n[SHA256SUMS.txt](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/SHA256SUMS.txt) contiene los hashes de los instaladores. [VALIDATION.json](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/VALIDATION.json) registra el commit, las pruebas por plataforma y los hashes publicados.",
+      "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.3.0",
+      "sourceRevision": "7679aaee0f87625a5281915a201ec2fa9684f392",
+      "platformSources": {
+        "windows-x64": "7679aaee0f87625a5281915a201ec2fa9684f392",
+        "macos-arm64": "7679aaee0f87625a5281915a201ec2fa9684f392",
+        "macos-x64": "7679aaee0f87625a5281915a201ec2fa9684f392"
+      },
+      "assets": [
+        {
+          "platform": "windows-x64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-Windows-x64-Setup.exe",
+          "size": 23134140,
+          "sha256": "4d80ba43a448da8c77e4d9058c4d65b9435c8d68e25c5e87939f42c0d5b59248",
+          "sourceRevision": "7679aaee0f87625a5281915a201ec2fa9684f392"
+        },
+        {
+          "platform": "windows-x64-portable",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-Windows-x64.zip",
+          "size": 31991004,
+          "sha256": "57369fc88c23dd64ccbba5ac422db84c1e8b51f1dddc580418fd3336939dabc9",
+          "sourceRevision": "7679aaee0f87625a5281915a201ec2fa9684f392"
+        },
+        {
+          "platform": "macos-arm64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-macOS-arm64.dmg",
+          "size": 31734323,
+          "sha256": "b861e29307973468e5844c9d2e140a464516f9af29f376d8a5aa4c9d3c40aa77",
+          "sourceRevision": "7679aaee0f87625a5281915a201ec2fa9684f392"
+        },
+        {
+          "platform": "macos-x64",
+          "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-macOS-x64.dmg",
+          "size": 36199487,
+          "sha256": "e56504b21b77b7b4130cd43e02f69fee0b2a24939293d11fd3e52ef5469f2592",
+          "sourceRevision": "7679aaee0f87625a5281915a201ec2fa9684f392"
+        }
+      ],
+      "platformStatus": {
+        "windows-x64": "available",
+        "macos-arm64": "available",
+        "macos-x64": "available",
+        "linux-x64": "in development: full CI quality checks failed; package withheld"
+      }
+    },
+    {
       "version": "2.2.0",
       "tag": "ak-v2.2.0",
       "notes": "AK Screen 2.2: edición, composición y grabación ampliadas.\n\n- Barra principal compacta con menús desplegables y ajustes globales visibles.\n- Paneles reordenables mediante arrastre; espacios de trabajo guardados y superficie continua.\n- Atajos configurables, controles de grabación y corrección de edición de valores decimales.\n- Grabación entre 15 y 120 FPS objetivo, calidad ajustable y audio del sistema y micrófono en pistas separadas. Audio del sistema disponible mediante WASAPI en Windows.\n- Subtítulos automáticos locales desde audio seleccionado o secuencia completa, con revisión antes de insertar. El modelo Whisper se descarga solo con autorización y se comparte entre versiones compatibles.\n- Transformación directa en la vista previa: mover, escalar y rotar.\n- Capas 2.5D, relaciones padre/hijo, controladores, anclajes, alineación y distribución.\n- Primitivas 3D procedurales con cámara, luz, materiales y profundidad dentro de cada objeto.\n- Presets de movimiento, fotogramas clave, cámara parallax, grano, Unmult y desenfoque de movimiento temporal.\n- Correcciones de tiempo en curvas y navegación de fotogramas clave; efectos renombrables con etiquetas de color.\n- Temas con 47 colores, métricas, disposición de paneles, estilos CSS nativos, iconos SVG, fuentes locales y fondos animados.\n- Tema avanzado AK Studio Pro en el catálogo de la comunidad.\n- Menús y cuadros largos con desplazamiento y altura adaptable.\n- Historial de versiones con detección de instalaciones, rutas, copias portables y desinstalación independiente; conserva proyectos, temas y modelos.\n- Descargas verificadas desde GitHub, con instalación por versión.\n\nLos FPS dependen del equipo y la región capturada. Linux requiere X11 para eventos globales; macOS requiere permisos de grabación y accesibilidad. La composición 3D actual usa primitivas procedurales: no importa escenas externas ni incluye un motor de geometría completo. No se incluyen modelos de voz ni FFmpeg en el instalador. Las licencias y atribuciones acompañan a los paquetes. Conserva una copia antes de abrir proyectos 2.2 en versiones anteriores.",

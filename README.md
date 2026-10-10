@@ -22,7 +22,7 @@ AK Screen reúne captura de escritorio y edición multipista. El video, los clic
 el cursor, la cámara y los textos quedan en capas que puedes ajustar después de
 grabar. Tus proyectos, capturas y eventos se guardan en tu dispositivo.
 
-> **AK Screen 2.2 ya está disponible.** Incluye composición por capas, objetos 3D, subtítulos locales, audio del sistema, atajos configurables y administración de versiones instaladas. [Descargar AK Screen 2.2.0](https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.2.0).
+> **AK Screen 2.3.0 está disponible** para Windows x64, macOS Apple Silicon y macOS Intel. [Instalador de Windows](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-Windows-x64-Setup.exe) · [Descargas y cambios](https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.3.0). **Linux x64: En desarrollo**; el control de calidad completo falló y aún no hay paquete para descargar.
 
 | Captura | Edición | Personalización |
 |---|---|---|
@@ -32,6 +32,41 @@ grabar. Tus proyectos, capturas y eventos se guardan en tu dispositivo.
 | Interfaces de Windows en capas de imagen | Títulos, audio, efectos y MP4 | Historial y descargas desde la campana |
 
 [**Explorar el catálogo de temas →**](https://edgajuman.github.io/AK-Screen-Themes/)
+
+[**Explorar extensiones y widgets →**](https://edgajuman.github.io/AK-Screen-Extensions/)
+
+## Extensiones para tu flujo de trabajo
+
+En **Herramientas → Extensiones** instala herramientas del catálogo firmado o
+importa un paquete local. Los widgets pueden ocupar el panel de extensiones o
+una ventana flotante. La activación muestra los permisos solicitados.
+
+| Extensión de Edgajuman | Uso |
+|---|---|
+| Notas | Conserva apuntes dentro de tu equipo |
+| Checklist de tutorial | Revisa los pasos de una grabación |
+| Títulos animados | Aplica entradas a los textos seleccionados |
+| Herramientas de cámara | Ajusta la composición por capas |
+| Acabado | Aplica ajustes visuales |
+| Chat AI | Consulta a OpenAI, OpenRouter, Gemini, Claude o Grok con tus claves |
+| WASM Lab | Ejemplo del SDK: contador persistente y efecto de color Warm Grade |
+
+**Chat AI** puede recibir un resumen del proyecto o un fotograma con tu
+autorización. Las claves se guardan en el almacén de credenciales del sistema;
+el asistente no ejecuta acciones en el editor. Los proveedores requieren
+Internet y pueden cobrar por uso.
+
+Puedes instalar varias versiones de una extensión, activar una, actualizarla o
+volver a una anterior. Los cambios de versión conservan los datos y crean una
+copia. Al desinstalar, puedes elegir **borrar datos** y **borrar claves** por
+separado; ambas opciones están desmarcadas inicialmente. El borrado de datos
+afecta a todas las versiones de esa extensión y requiere confirmación.
+
+El [repositorio y SDK de extensiones](https://github.com/Edgajuman/AK-Screen-Extensions)
+incluye ejemplos y el proceso de fork y pull request. Los componentes WebAssembly
+no reciben acceso directo a archivos, procesos ni red: trabajan con permisos y
+límites de memoria e instrucciones. La revisión y el mantenimiento siguen siendo
+necesarios; el aislamiento no garantiza ausencia de vulnerabilidades.
 
 ## El editor en uso
 
@@ -73,8 +108,12 @@ se importan como una imagen completa.
 En **Herramientas → Animación, capas y efectos…** puedes crear controles de capas,
 vincular clips, ajustar anclas, alinear y distribuir, y generar animaciones con
 fotogramas editables. La vista previa permite mover, escalar y girar una selección.
-Las capas 2.5D incluyen profundidad y perspectiva; el generador 3D ofrece cubos,
-esferas, planos, cilindros, pirámides y toros con material e iluminación.
+Las capas existentes admiten profundidad y rotación X/Y/Z: puedes inclinar una
+imagen, un video o un texto hacia dentro y hacia fuera del plano. La cámara
+compartida 2D/3D admite fotogramas clave y controles en la vista previa. El
+generador de objetos ofrece cubos, esferas, planos, cilindros, pirámides y toros.
+Los textos incluyen degradados y animación por caracteres, además de los
+controles de fuente, tamaño, espaciado, contorno y fondo.
 
 **Herramientas → Subtítulos automáticos…** transcribe una pista seleccionada o la
 secuencia. El modelo se descarga solo con tu consentimiento y se guarda en una
@@ -88,8 +127,8 @@ superficie, las líneas y la disposición mediante estilos nativos acotados.
 
 ![Ajustes de grabación y audio](assets/screenshots/recording-settings-2.2.png)
 
-El sistema 3D actual es procedural: no importa modelos OBJ/glTF ni ofrece una
-escena compartida con sombras entre objetos. Las cámaras 2.5D se aplican por capa.
+La composición transforma planos de capas; no importa modelos OBJ/glTF ni
+ofrece sombras entre objetos. Los generadores de geometría son procedurales.
 La precisión de los subtítulos depende del modelo y del audio; requiere revisión.
 
 ## Descargas
@@ -141,10 +180,18 @@ muestra sus rutas y permite abrir el desinstalador de cada versión de Windows.
 La versión en uso requiere guardar y cerrar antes de retirarla. Las copias
 portables se administran desde su carpeta. El administrador reconoce instalaciones antiguas; para usar estos controles, abre AK Screen 2.2 o posterior. No se necesita una cuenta para usar la aplicación.
 
+Desde 2.3, la campana también muestra anuncios firmados, guías y contenido con
+Markdown, imágenes, GIF y videos. El visor de videos de los avisos reproduce
+sin audio. Puedes consultar después el contenido ya descargado sin conexión.
+Los paquetes de contenido no reemplazan los ejecutables del editor.
+
+Si hay cambios al cerrar un proyecto, AK Screen ofrece **Guardar**, **No guardar**
+o **Cancelar**. Elegir No guardar descarta también su recuperación pendiente.
+
 Este repositorio publica instaladores, temas, guías y metadatos. El código fuente
-se administra en un repositorio privado. Las compilaciones leen la fuente con
-una clave de solo lectura en máquinas temporales y cifran sus diagnósticos para
-el propietario. No se publican fuentes ni cachés de compilación.
+se administra en un repositorio privado. La infraestructura pública de compilación
+recibe archivos de fuente cifrados y cifra sus diagnósticos y cachés. Solo los
+paquetes de distribución se publican para descargar.
 
 ## Créditos
 
