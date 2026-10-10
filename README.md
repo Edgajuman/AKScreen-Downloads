@@ -22,7 +22,7 @@ AK Screen reúne captura de escritorio y edición multipista. El video, los clic
 el cursor, la cámara y los textos quedan en capas que puedes ajustar después de
 grabar. Tus proyectos, capturas y eventos se guardan en tu dispositivo.
 
-> **AK Screen 2.3.0 está disponible** para Windows x64, macOS Apple Silicon y macOS Intel. [Instalador de Windows](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-Windows-x64-Setup.exe) · [Descargas y cambios](https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.3.0). **Linux x64: En desarrollo**; el control de calidad completo falló y aún no hay paquete para descargar.
+> **AK Screen 2.3.0 está disponible** para Windows x64, Linux x64 y macOS (Apple Silicon e Intel). [Instalador de Windows](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-Windows-x64-Setup.exe) · [Paquete Linux](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.3.0/AKScreen-Linux-x64.tar.gz) · [Descargas para macOS y otros formatos](https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.3.0).
 
 | Captura | Edición | Personalización |
 |---|---|---|

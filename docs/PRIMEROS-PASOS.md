@@ -1,6 +1,6 @@
 # De una grabación a un tutorial
 
-> **Descargas AK Screen 2.3.0:** Windows x64 y macOS (Apple Silicon e Intel) ya están disponibles en [GitHub Releases](https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.3.0). Linux x64 permanece **En desarrollo** mientras se resuelve la validación de CI.
+> **Descargas AK Screen 2.3.0:** Windows x64, Linux x64 y macOS (Apple Silicon e Intel) están disponibles en [GitHub Releases](https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.3.0). Los paquetes se validaron en GitHub Actions y se publicaron en la release existente `ak-v2.3.0`.
 
 ## 1. Grabar
 
