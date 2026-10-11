@@ -71,10 +71,23 @@ jobs:
           catalogue['releases']=[r]+[x for x in catalogue['releases'] if x['tag']!=r['tag']]
           catalogue['releases'].sort(key=lambda r:tuple(map(int,r['version'].split('.'))),reverse=True)
           pathlib.Path('versions.json').write_text(json.dumps(catalogue,ensure_ascii=False,indent=2)+'\n')
+          start='<!-- AKSCREEN-LATEST-RELEASE-START -->'
+          end='<!-- AKSCREEN-LATEST-RELEASE-END -->'
+          readme=pathlib.Path('README.md').read_text(encoding='utf-8')
+          if readme.count(start)!=1 or readme.count(end)!=1: raise SystemExit('README must contain exactly one latest-release block')
+          before,remainder=readme.split(start,1)
+          _,after=remainder.split(end,1)
+          version=r['version']; tag=r['tag']
+          root=f'https://github.com/{repo}/releases/download/{tag}'
+          latest=(f'> **AK Screen {version} está disponible** para Windows x64, Linux x64 y macOS (Apple Silicon e Intel). '
+                  f'[Instalador de Windows]({root}/AKScreen-Windows-x64-Setup.exe) · '
+                  f'[Paquete Linux]({root}/AKScreen-Linux-x64.tar.gz) · '
+                  f'[Descargas para macOS y otros formatos](https://github.com/{repo}/releases/tag/{tag}).')
+          pathlib.Path('README.md').write_text(f'{before}{start}\n{latest}\n{end}{after}',encoding='utf-8')
           PY
           git config user.name 'AK Screen Releases'
           git config user.email 'noreply@users.noreply.github.com'
-          git add versions.json
+          git add versions.json README.md
           git diff --cached --quiet || git commit -m "Publish $(cat /tmp/akscreen-release.json | python3 -c 'import json,sys; print(json.load(sys.stdin)["version"])')"
           git push origin main
       - name: Remove temporary installer branch

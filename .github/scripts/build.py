@@ -2,6 +2,7 @@
 import json
 import os
 import re
+from collections import Counter
 from pathlib import Path
 import subprocess
 import sys
@@ -44,6 +45,14 @@ with log.open("wb") as output:
         result = subprocess.run(command, cwd=root, env=env, stdout=output, stderr=subprocess.STDOUT)
         output.flush()
         if result.returncode:
+            if name == "Compilación":
+                diagnostics = log.read_text(encoding="utf-8", errors="replace")
+                codes = Counter(re.findall(r"^error\[(E\d{4})\]:", diagnostics, re.MULTILINE))
+                if codes:
+                    summary = ", ".join(f"{code} × {count}" for code, count in sorted(codes.items()))
+                    print(f"Diagnóstico seguro (solo códigos Rust, sin rutas ni código fuente): {summary}", flush=True)
+                else:
+                    print("Diagnóstico seguro: Cargo no emitió códigos de error Rust clasificables.", flush=True)
             print(f"::error::{name} falló. El diagnóstico está cifrado para el propietario.", flush=True)
             sys.exit(result.returncode)
         print(f"{name}: correcto", flush=True)

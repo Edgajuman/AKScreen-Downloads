@@ -56,9 +56,26 @@ catalogue = json.loads(Path("versions.json").read_text(encoding="utf-8"))
 catalogue["releases"] = [metadata] + [r for r in catalogue["releases"] if r["tag"] != tag]
 catalogue["releases"].sort(key=lambda r: tuple(map(int, r["version"].split("."))), reverse=True)
 Path("versions.json").write_text(json.dumps(catalogue, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+readme_path = Path("README.md")
+readme = readme_path.read_text(encoding="utf-8")
+start_marker = "<!-- AKSCREEN-LATEST-RELEASE-START -->"
+end_marker = "<!-- AKSCREEN-LATEST-RELEASE-END -->"
+if readme.count(start_marker) != 1 or readme.count(end_marker) != 1:
+    raise SystemExit("README must contain exactly one latest-release block")
+before, remainder = readme.split(start_marker, 1)
+_, after = remainder.split(end_marker, 1)
+download_root = f"https://github.com/{repo}/releases/download/{tag}"
+latest = (
+    f"> **AK Screen {version} está disponible** para Windows x64, Linux x64 y macOS "
+    "(Apple Silicon e Intel). "
+    f"[Instalador de Windows]({download_root}/AKScreen-Windows-x64-Setup.exe) · "
+    f"[Paquete Linux]({download_root}/AKScreen-Linux-x64.tar.gz) · "
+    f"[Descargas para macOS y otros formatos](https://github.com/{repo}/releases/tag/{tag})."
+)
+readme_path.write_text(f"{before}{start_marker}\n{latest}\n{end_marker}{after}", encoding="utf-8")
 subprocess.run(["git", "config", "user.name", "AK Screen Releases"], check=True)
 subprocess.run(["git", "config", "user.email", "noreply@users.noreply.github.com"], check=True)
-subprocess.run(["git", "add", "versions.json"], check=True)
+subprocess.run(["git", "add", "versions.json", "README.md"], check=True)
 if subprocess.run(["git", "diff", "--cached", "--quiet"]).returncode:
     subprocess.run(["git", "commit", "-m", f"Publish AK Screen {version}"], check=True)
     subprocess.run(["git", "push", "origin", "HEAD:main"], check=True)
