@@ -52,7 +52,14 @@ with log.open("wb") as output:
                     summary = ", ".join(f"{code} × {count}" for code, count in sorted(codes.items()))
                     print(f"Diagnóstico seguro (solo códigos Rust, sin rutas ni código fuente): {summary}", flush=True)
                 else:
+                    summary = "sin códigos Rust clasificables"
                     print("Diagnóstico seguro: Cargo no emitió códigos de error Rust clasificables.", flush=True)
+                step_summary = os.environ.get("GITHUB_STEP_SUMMARY")
+                if step_summary:
+                    with Path(step_summary).open("a", encoding="utf-8") as report:
+                        report.write("## Resumen seguro de compilación\n\n")
+                        report.write(f"- Etapa: {name}\n- Códigos Rust: {summary}\n")
+                        report.write("- El registro detallado permanece cifrado.\n")
             print(f"::error::{name} falló. El diagnóstico está cifrado para el propietario.", flush=True)
             sys.exit(result.returncode)
         print(f"{name}: correcto", flush=True)
