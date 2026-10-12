@@ -149,10 +149,7 @@ necesarios; el aislamiento no garantiza ausencia de vulnerabilidades.
 
 ## El editor en uso
 
-**Capturas reales de AK Screen 2.4.0 instalado en Windows**, con contenido de
-demostración generado por la aplicación. Se tomaron durante la validación, antes
-de corregir el nombre de autor de los nuevos paquetes a **edgajuman**; algunos
-textos de esas capturas conservan el nombre anterior. No son maquetas.
+**Capturas reales de AK Screen 2.4.0 instalado en Windows**
 
 ![Editor 2.4.0 con galería de efectos](assets/screenshots/editor-gallery-2.4.jpg)
 
