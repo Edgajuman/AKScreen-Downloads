@@ -106,7 +106,6 @@ conserva los recursos, las licencias y los créditos del tema original.
 | Medios, efectos y plantillas | [Biblioteca de recursos](https://edgajuman.github.io/AKScreen-Assets/) |
 | Crear una extensión | [SDK y ejemplos](https://github.com/Edgajuman/AK-Screen-Extensions/tree/main/sdk) |
 | Publicar recursos desde tu cuenta | [GitHub App](https://github.com/apps/ak-screen-asset-publisher) · [Guía de aportes](https://github.com/Edgajuman/AKScreen-Assets/blob/main/CONTRIBUTING.md) |
-| Anuncios y contenido firmado | [Panel del administrador](https://edgajuman.github.io/AKScreen-Downloads/panel/) — requiere acceso del propietario |
 
 ## Extensiones para tu flujo de trabajo
 
