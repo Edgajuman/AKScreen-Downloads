@@ -37,13 +37,84 @@ grabar. Tus proyectos, capturas y eventos se guardan en tu dispositivo.
 
 [**Explorar extensiones y widgets →**](https://edgajuman.github.io/AK-Screen-Extensions/)
 
+## Nuevo en 2.4.0
+
+Esta revisión reemplaza los paquetes de **2.4.0**. Si instalaste la primera entrega,
+descarga de nuevo el instalador de la misma versión. Conserva tus proyectos,
+temas, modelos y datos de extensiones.
+
+| Herramienta | Qué puedes hacer |
+|---|---|
+| **Gráficos interactivos** | Crear barras verticales u horizontales, líneas, sectores, anillos y cronologías. Editar datos o importar CSV, colores, títulos, contornos, tipografía y tiempos. Insertar capas animadas con fotogramas clave; actualizar el gráfico seleccionado y deshacer. |
+| **Biblioteca comunitaria** | Explorar imágenes, audio, títulos, Essential Graphics, Essential Sound, gráficos de datos, transiciones, efectos, filtros, animaciones y LUTs. Descargar recursos o colecciones completas con comprobación SHA-256. |
+| **Biblioteca · Descargas en Effects** | Encontrar lo instalado por colección. Insertar medios y gráficos; aplicar presets a la selección sin abandonar el editor. |
+| **Galería de efectos** | Alternar lista y tarjetas, buscar y ver las transiciones animadas al pasar el cursor. Las muestras de transición usan el efecto del motor sobre dos escenas de ejemplo. |
+| **Extensiones** | Catálogo con tarjetas, información, vistas de widgets y selección de versiones. Menú Herramientas con submenús por extensión y desplazamiento. |
+| **Chat AI** | Conversación con mensajes diferenciados, historial local, entrada multilínea y estado de respuesta. Cinco proveedores con claves propias y contexto del editor opcional. |
+| **Temas y widgets** | Galería de efectos configurable desde CSS nativo; estilos de widgets limitados a su propia ventana y controles. Modo panel, flotante o ambos según el manifiesto. |
+
+Los **gráficos interactivos** son editables dentro de AK Screen. Al exportar video,
+se convierten en imagen y animación; el espectador no recibe controles interactivos.
+
+### Colecciones originales de edgajuman
+
+[**Abrir la biblioteca web →**](https://edgajuman.github.io/AKScreen-Assets/)
+
+- **Motion Essentials · 7 recursos:** título animado editable, tres transiciones,
+  contraste, desenfoque y entrada de opacidad.
+- **Data Stories · 6 recursos:** una plantilla para cada tipo de gráfico.
+- **Sound & Surfaces · 6 recursos:** dos presets de Essential Sound, fondo WebP,
+  GIF animado, señal de audio original y LUT.
+- **Loop Studies · 1 recurso:** video original de barras animadas, MP4 H.264,
+  640 × 360 y 30 FPS.
+
+La biblioteca inicial reúne **20 recursos en cuatro colecciones**.
+
+Cada recurso indica su licencia, compatibilidad y suma SHA-256. Las ilustraciones
+de los catálogos son ejemplos visuales; las capturas del editor se identifican aparte.
+En el editor abre **Herramientas → Biblioteca comunitaria → Actualizar catálogo**.
+Para publicar, conecta tu propia cuenta de GitHub, prepara el aporte y envía un
+pull request desde tu fork. Solo los aportes revisados y aceptados llegan al catálogo.
+No se distribuye un token compartido con la aplicación.
+
+### Studio Gallery · tema avanzado
+
+[**Ver el tema y sus componentes →**](https://github.com/Edgajuman/AK-Screen-Themes/tree/main/themes/edgajuman/studio-gallery)
+
+El ejemplo de edgajuman utiliza 47 colores, 11 medidas, disposición de paneles,
+galería de efectos de tres columnas, 24 iconos SVG, una fuente local con licencia,
+fondo WebP original y pantalla de carga GIF. Instálalo desde
+**Configuración → Temas y catálogo**.
+
+[**Constructor web de temas →**](https://edgajuman.github.io/AK-Screen-Themes/theme-studio.html)
+permite revisar colores, medidas, paneles y los estilos nativos admitidos y exportar
+un ZIP para contribuir. Es una representación web del editor; valida el resultado
+final en AK Screen. El CSS nativo no admite JavaScript ni hojas web arbitrarias.
+
+En **Temas publicados** puedes previsualizar también los temas de 2.0 y 2.1,
+conservar tu borrador y crear una variante para la versión actual. El remake
+conserva los recursos, las licencias y los créditos del tema original.
+
+### Sitios y herramientas de la comunidad
+
+| Página | Acceso |
+|---|---|
+| Descargas e historial | [Releases de AK Screen](https://github.com/Edgajuman/AKScreen-Downloads/releases) |
+| Temas aprobados | [Catálogo de temas](https://edgajuman.github.io/AK-Screen-Themes/) |
+| Crear, previsualizar o rehacer un tema | [Theme Studio](https://edgajuman.github.io/AK-Screen-Themes/theme-studio.html) |
+| Extensiones y widgets versionados | [Catálogo de extensiones](https://edgajuman.github.io/AK-Screen-Extensions/) |
+| Medios, efectos y plantillas | [Biblioteca de recursos](https://edgajuman.github.io/AKScreen-Assets/) |
+| Crear una extensión | [SDK y ejemplos](https://github.com/Edgajuman/AK-Screen-Extensions/tree/main/sdk) |
+| Publicar recursos desde tu cuenta | [GitHub App](https://github.com/apps/ak-screen-asset-publisher) · [Guía de aportes](https://github.com/Edgajuman/AKScreen-Assets/blob/main/CONTRIBUTING.md) |
+| Anuncios y contenido firmado | [Panel del administrador](https://edgajuman.github.io/AKScreen-Downloads/panel/) — requiere acceso del propietario |
+
 ## Extensiones para tu flujo de trabajo
 
 En **Herramientas → Extensiones** instala herramientas del catálogo firmado o
 importa un paquete local. Los widgets pueden ocupar el panel de extensiones o
 una ventana flotante. La activación muestra los permisos solicitados.
 
-| Extensión de Edgajuman | Uso |
+| Extensión | Uso |
 |---|---|
 | Notas | Conserva apuntes dentro de tu equipo |
 | Checklist de tutorial | Revisa los pasos de una grabación |
@@ -51,6 +122,12 @@ una ventana flotante. La activación muestra los permisos solicitados.
 | Herramientas de cámara | Ajusta la composición por capas |
 | Acabado | Aplica ajustes visuales |
 | Chat AI | Consulta a OpenAI, OpenRouter, Gemini, Claude o Grok con tus claves |
+| Audio Workbench | Accesos de voz, dinámica y música |
+| Color Workbench | Corrección de color y acabado |
+| Motion Kit | Presets editables de capas, cámara y movimiento |
+| Chart Atelier | Gráficos animados con valores y estilos editables |
+| Brand Titles | Títulos con degradado, contorno y entrada animada |
+| Delivery Checklist | Revisión persistente de imagen, sonido, subtítulos y entrega |
 | WASM Lab | Ejemplo del SDK: contador persistente y efecto de color Warm Grade |
 
 **Chat AI** puede recibir un resumen del proyecto o un fotograma con tu
@@ -72,17 +149,24 @@ necesarios; el aislamiento no garantiza ausencia de vulnerabilidades.
 
 ## El editor en uso
 
-Capturas reales de AK Screen 2.2 con AK Studio Pro y contenido de demostración generado por la aplicación.
+**Capturas reales de AK Screen 2.4.0 instalado en Windows**, con contenido de
+demostración generado por la aplicación. Se tomaron durante la validación, antes
+de corregir el nombre de autor de los nuevos paquetes a **edgajuman**; algunos
+textos de esas capturas conservan el nombre anterior. No son maquetas.
 
-![Editor con AK Studio Pro](assets/screenshots/editor-ak-studio-pro.png)
+![Editor 2.4.0 con galería de efectos](assets/screenshots/editor-gallery-2.4.jpg)
 
-| Sakura Pulse | Pantalla de carga personalizada |
+| Gráficos animados en la timeline | Personalización del gráfico |
 |---|---|
-| ![Editor con Sakura Pulse](assets/screenshots/editor-sakura-pulse.png) | ![Inicio con Sakura Pulse](assets/screenshots/startup-sakura-pulse.png) |
+| ![Barras, capas y timeline](assets/screenshots/charts-timeline-2.4.jpg) | ![Apariencia, fuentes y colores](assets/screenshots/charts-style-2.4.jpg) |
+| Biblioteca con colecciones | Essential Graphics descargado |
+| ![Biblioteca comunitaria](assets/screenshots/library-catalogue-2.4.jpg) | ![Plantilla descargada y controles editables](assets/screenshots/library-essential-graphics-2.4.jpg) |
+| Descargas dentro de Effects | Chat AI: vista previa del widget |
+| ![Biblioteca Descargas](assets/screenshots/effects-downloads-2.4.jpg) | ![Vista previa de conversación; mensajes de ejemplo](assets/screenshots/chat-preview-2.4.jpg) |
+| Widget flotante | Menús agrupados y desplazables |
+| ![Audio Workbench flotante](assets/screenshots/widget-floating-2.4.jpg) | ![Herramientas con scroll](assets/screenshots/tools-scroll-2.4.jpg) |
 
-El catálogo también está integrado en el editor, con vistas previas y descarga del paquete completo:
-
-![Catálogo integrado de temas](assets/screenshots/theme-catalog-2.2.png)
+[**Ver las 16 capturas y el detalle completo de la revisión →**](docs/NOVEDADES-2.4.md)
 
 ## Ejemplos de uso
 
@@ -192,7 +276,7 @@ o **Cancelar**. Elegir No guardar descarta también su recuperación pendiente.
 
 Este repositorio publica instaladores, temas, guías y metadatos. El código fuente
 se administra en un repositorio privado. La infraestructura pública de compilación
-recibe archivos de fuente cifrados y cifra sus diagnósticos y cachés. Solo los
+lee el código privado con una clave de solo lectura y cifra sus diagnósticos. Solo los
 paquetes de distribución se publican para descargar.
 
 ## Créditos
