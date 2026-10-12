@@ -4,38 +4,38 @@
     {
       "version": "2.4.0",
       "tag": "ak-v2.4.0",
-      "notes": "AK Screen 2.4.0 — biblioteca comunitaria y mejoras del editor.\n\n- Biblioteca de recursos comunitarios integrada: busca, previsualiza, descarga e instala transiciones, efectos, títulos, plantillas y medios compatibles.\n- Verificación del catálogo y paquetes mediante SHA-256; instalación local y disponibilidad sin conexión después de descargar.\n- Envío opcional de recursos desde el editor mediante GitHub Device Flow. Las propuestas se publican en una rama y requieren revisión y pull request; nunca se escriben directamente en el catálogo principal.\n- Extensiones y widgets con presentación configurable, estilos CSS acotados, modo de panel o ventana flotante y variables del tema.\n- Mejoras de vista previa de efectos y widgets de audio, color, motion, cámara, acabado y títulos.\n- Herramientas de composición con cámara, profundidad y rotación X/Y/Z, curvas y controles de transformación.\n- Guardado local de credenciales de proveedor en el almacén seguro del sistema; no se incluyen claves ni modelos de IA.\n\nLos recursos comunitarios no ejecutan código al instalarse. Revisa los archivos y licencias antes de publicar. La publicación requiere autorizar la GitHub App y tenerla instalada en un repositorio o fork elegido; cada propuesta se revisa antes de aparecer en el catálogo. Los proveedores de IA requieren Internet y pueden cobrar por uso. La composición trabaja con capas planas y no es un motor 3D general.",
-      "sourceRevision": "bd051a411d15347680c4ecd512581fcc427f231c",
+      "notes": "AK Screen 2.4.0 — revisión completa de biblioteca, widgets y gráficos de datos.\n\n- Recursos descargados integrados en Effects → Biblioteca · Descargas, con caché local, vistas previas verificadas y descarga individual o por paquete.\n- Recursos de Essential Graphics (.fcgt), Essential Sound, transiciones, efectos, filtros, animación, imágenes, audio y vídeo. Compartir recursos admite una vista previa por archivo y envío como pull request con tu propia cuenta de GitHub.\n- Galería/lista de efectos seleccionable. Transiciones visuales animadas al pasar el cursor; filtros con comparación antes/después animada.\n- Gráficos interactivos: barras, barras horizontales, líneas, circular, anillo y línea de tiempo. Datos editables, CSV, colores, fuentes, contorno, fondo y entrada suave. Capas vectoriales y fotogramas clave utilizables en timeline y exportación, con actualización de datos y deshacer.\n- Herramientas con scroll y submenús agrupados por extensión. Catálogos de extensiones y temas con vistas previas, información de compatibilidad, acciones y selección de versiones.\n- 12 extensiones de dehuman: Chat AI, Notes, Tutorial Checklist, Motion Titles, Camera Tools, Finish Tools, Audio Workbench, Color Workbench, Motion Kit, Chart Atelier, Brand Titles y Delivery Checklist. Sus widgets se actualizan a 1.3.0 conservando datos locales.\n- Chat AI con globos de conversación, mensajes de varios párrafos, estados de respuesta, estilos CSS propios y varios proveedores. Las claves permanecen en el almacén seguro del sistema.\n- Nuevo tema dehuman Studio Gallery y recursos originales disponibles en los catálogos web y dentro del editor.\n\nEsta revisión sustituye los instaladores del mismo release 2.4.0; no cambia a 2.5 ni publica un anuncio en el editor. Los vídeos contienen gráficos animados; la interacción y edición de datos ocurren dentro del editor. CSS es un lenguaje nativo limitado y seguro, no CSS arbitrario ni JavaScript. La biblioteca descarga sin login; publicar requiere un fork autorizado mediante la GitHub App y aprobación por pull request. La composición 3D usa capas planas, no un motor de escenas 3D general.",
+      "sourceRevision": "ac53552402fd2870611ccb4a5f331ddd3c8991c2",
       "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.4.0",
-      "date": "2026-10-11",
+      "date": "2026-10-12",
       "assets": [
         {
           "platform": "linux-x64",
           "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.4.0/AKScreen-Linux-x64.tar.gz",
-          "size": 34980445,
-          "sha256": "32f3b76025698c4bb9e894607a0a819e59f1f60a1a982181fc14416ad7d1edee",
-          "sourceRevision": "bd051a411d15347680c4ecd512581fcc427f231c"
+          "size": 35181359,
+          "sha256": "56a1985d44f6632eca1d331f8b7f6878013cf919dc7489f35c13ec6bd8bea30e",
+          "sourceRevision": "ac53552402fd2870611ccb4a5f331ddd3c8991c2"
         },
         {
           "platform": "macos-arm64",
           "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.4.0/AKScreen-macOS-arm64.dmg",
-          "size": 31992300,
-          "sha256": "7c20b6275d92c979d49f91309ac339bb3b9208abd2594b3950b3e8c3500b0bb5",
-          "sourceRevision": "bd051a411d15347680c4ecd512581fcc427f231c"
+          "size": 32192453,
+          "sha256": "51b87a6bfe5aaaaed8af8ed3188a45e7eba77b4d65d68cf9e070686206a12a75",
+          "sourceRevision": "ac53552402fd2870611ccb4a5f331ddd3c8991c2"
         },
         {
           "platform": "macos-x64",
           "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.4.0/AKScreen-macOS-x64.dmg",
-          "size": 36434267,
-          "sha256": "221403fcae3c0ac786aeac2a40162e134b6c2089f6f470f110d1ddfb18d8cb08",
-          "sourceRevision": "bd051a411d15347680c4ecd512581fcc427f231c"
+          "size": 37257129,
+          "sha256": "52bb28c389ed50ac4deec7595b1d3fe01ee4b68ff7cbde4b3128253380d863bf",
+          "sourceRevision": "ac53552402fd2870611ccb4a5f331ddd3c8991c2"
         },
         {
           "platform": "windows-x64",
           "url": "https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.4.0/AKScreen-Windows-x64-Setup.exe",
-          "size": 23328569,
-          "sha256": "951cda47de41355fcfd5bfcbb77203a711b0527aa0c10dda40c2f1d5ba8e013c",
-          "sourceRevision": "bd051a411d15347680c4ecd512581fcc427f231c"
+          "size": 23478999,
+          "sha256": "cedc9cd17d537c344c75587421de7af320966f9c2437505105ed83a04c433b89",
+          "sourceRevision": "ac53552402fd2870611ccb4a5f331ddd3c8991c2"
         }
       ]
     },
