@@ -23,6 +23,8 @@ steps = [
     ("Compilación", ["cargo", "build", "--release", "--locked", "-p", "filmcraft", "--bin", "AKScreen", "--target", target]),
     ("Temas", ["cargo", "test", "--release", "--locked", "-p", "filmcraft-ui-egui", "--lib", "--target", target, "theme::tests::akscreen_themes"]),
     ("Grabación y edición", ["cargo", "test", "--release", "--locked", "-p", "filmcraft", "--bin", "AKScreen", "--target", target, "akscreen::"]),
+    ("Gráficos de datos", ["cargo", "test", "--release", "--locked", "-p", "filmcraft-project", "--lib", "--target", target, "charts::tests"]),
+    ("Gráficos en timeline", ["cargo", "test", "--release", "--locked", "-p", "filmcraft-engine", "--lib", "--target", target, "charts_create_render_update_undo"]),
     ("Arquitectura", ["cargo", "xtask", "layers"]),
     ("Atribuciones", ["cargo", "xtask", "assets"]),
 ]
@@ -69,3 +71,4 @@ if base_revision:
     metadata["baseSourceRevision"] = base_revision
 Path("metadata").mkdir(exist_ok=True)
 Path("metadata/release.json").write_text(json.dumps(metadata, ensure_ascii=False, indent=2), encoding="utf-8")
+
