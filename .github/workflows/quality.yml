@@ -9,7 +9,7 @@ on:
       check_mode:
         description: Full suite or quick type-check
         type: choice
-        options: [full, compile, regressions]
+        options: [full, compile, regressions, repair]
         default: full
 permissions:
   contents: read
@@ -49,7 +49,7 @@ jobs:
           sudo apt-get -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 -o Acquire::Retries=2 update
           sudo apt-get -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 -o Acquire::Retries=2 install -y libasound2-dev libgtk-3-dev libxkbcommon-dev libwayland-dev libx11-dev libxi-dev libxtst-dev libxrandr-dev libxcursor-dev libxinerama-dev libgl1-mesa-dev libgbm-dev libpipewire-0.3-dev libspa-0.2-dev libxcb-randr0-dev libdbus-1-dev libclang-dev pkg-config mesa-vulkan-drivers fonts-noto-cjk
       - name: Pinned modern external codec oracle
-        if: inputs.check_mode != 'compile'
+        if: inputs.check_mode == 'full' || inputs.check_mode == 'regressions'
         run: |
           oracle_name=ffmpeg-n9.0.2-23-g27b46f0fbc-linux64-gpl-9.0.tar.xz
           oracle_dir="$RUNNER_TEMP/akscreen-test-oracle"
@@ -77,7 +77,7 @@ jobs:
           retention-days: 7
           if-no-files-found: ignore
       - name: Tests and production performance (private diagnostics)
-        if: always() && inputs.check_mode != 'compile'
+        if: always() && (inputs.check_mode == 'full' || inputs.check_mode == 'regressions')
         env:
           AKSCREEN_CHECK_MODE: ${{ inputs.check_mode }}
           AKSCREEN_CHECK_PHASE: tests

@@ -4,6 +4,9 @@ from pathlib import Path
 import subprocess
 import sys
 
+if os.environ.get('AKSCREEN_CHECK_MODE') == 'repair':
+    sys.exit(subprocess.run([sys.executable, '.github/scripts/repair.py']).returncode)
+
 env = os.environ.copy()
 env['CARGO_INCREMENTAL'] = '0'
 env['CARGO_TERM_COLOR'] = 'never'
