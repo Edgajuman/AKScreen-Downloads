@@ -28,6 +28,15 @@ phase = os.environ.get('AKSCREEN_CHECK_PHASE', 'all')
 mode = os.environ.get('AKSCREEN_CHECK_MODE', 'full')
 if mode == 'regressions':
     steps = [steps[0],
+        ('Análisis de audio y espectros', ['cargo','test','--locked','--release','-p','filmcraft-engine','--lib','analysis::']),
+        ('Motion Design y partículas', ['cargo','test','--locked','--release','-p','filmcraft-engine','--lib','motion_design::']),
+        ('Cámara con objetivo y desenfoque', ['cargo','test','--locked','--release','-p','filmcraft-engine','--lib','camera::tests']),
+        ('Seguimiento de objetos y estabilización', ['cargo','test','--locked','--release','-p','filmcraft-engine','--lib','object_tracking_bakes_follow_keys_persists_and_stabilizes']),
+        ('Importación persistente de fuentes', ['cargo','test','--locked','--release','-p','filmcraft-engine','--lib','font_library::tests']),
+        ('Caracteres animados', ['cargo','test','--locked','--release','-p','filmcraft-render','--lib','text_motion::tests']),
+        ('Simulación de partículas', ['cargo','test','--locked','--release','-p','filmcraft-render','--lib','particles::tests']),
+        ('Interfaz nativa y biblioteca', ['cargo','test','--locked','--release','-p','filmcraft','--bin','AKScreen','akscreen::']),
+        ('Control local autenticado', ['cargo','test','--locked','--release','-p','filmcraft','--bin','AKScreen','control_server::tests']),
         ('Capas', ['cargo','test','--locked','--release','-p','filmcraft-engine','--lib','layers::tests']),
         ('Mate', ['cargo','test','--locked','--release','-p','filmcraft-render','--lib','unmult_removes']),
         ('Audio', ['cargo','test','--locked','--release','-p','filmcraft-audio-dsp','--lib','effects::time::tests']),
