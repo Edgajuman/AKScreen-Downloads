@@ -23,7 +23,7 @@ el cursor, la cámara y los textos quedan en capas que puedes ajustar después d
 grabar. Tus proyectos, capturas y eventos se guardan en tu dispositivo.
 
 <!-- AKSCREEN-LATEST-RELEASE-START -->
-> **AK Screen 3.0.0 está disponible** para Windows x64 y Linux x64. **macOS 3.0: en desarrollo.** [Instalador de Windows](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v3.0.0/AKScreen-Windows-x64-Setup.exe) · [Paquete Linux](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v3.0.0/AKScreen-Linux-x64.tar.gz) · [Todas las descargas e historial](https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v3.0.0).
+> **AK Screen 3.0.0 está disponible** para Windows x64 y Linux x64. **macOS 3.0: en desarrollo.** [Instalador de Windows](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v3.0.0/AKScreen-Windows-x64-Setup.exe) · [Descargas y sumas SHA-256](https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v3.0.0).
 <!-- AKSCREEN-LATEST-RELEASE-END -->
 
 | Captura | Edición | Personalización |
@@ -37,11 +37,36 @@ grabar. Tus proyectos, capturas y eventos se guardan en tu dispositivo.
 
 [**Explorar extensiones y widgets →**](https://edgajuman.github.io/AK-Screen-Extensions/)
 
-## Nuevo en 2.4.0
+## Nuevo en 3.0
 
-Esta revisión reemplaza los paquetes de **2.4.0**. Si instalaste la primera entrega,
-descarga de nuevo el instalador de la misma versión. Conserva tus proyectos,
-temas, modelos y datos de extensiones.
+**Movimiento, audio y composición con resultados editables.**
+
+| Herramienta | Qué incorpora |
+|---|---|
+| Seguimiento y estabilización | Selección de región en Program, análisis de posición/rotación/escala, vinculación de otra capa y correcciones suavizadas |
+| Animación desde audio | Volumen, graves, medios o agudos a fotogramas de escala, rotación, opacidad u otras propiedades escalares |
+| Espectros musicales | Barras o círculo, de 4 a 64 bandas, ataque, liberación, colores y capas vectoriales editables |
+| Partículas | Gravedad, viento, turbulencia, resistencia, semilla, vida, colores y colisión con suelo |
+| Cámara con objetivo | Coordenadas X/Y/Z o seguimiento del centro de una capa animada |
+| Desenfoque de movimiento | Obturación y muestreo temporal que incluye cámara, planos 3D y caracteres |
+| Animación de texto | Transformación por carácter, intervalo de selección, orden, desfase, máquina de escribir y contadores |
+| Motion Design | Oscilación, rebote, pulso, repetición, ping-pong, repetidores, trayectorias y edición de tiempos |
+| Fuentes | Búsqueda, fuentes del equipo e importación local persistente de TTF, OTF y TTC para texto y subtítulos |
+| Colaboración | Login individual con GitHub, fork automático, PR, borradores con autoguardado y estado de revisión |
+| Galería y archivos | Carpetas y subcarpetas plegables, descargas con tarjetas, Lista/Galería elegible y apertura de rutas reales |
+| Agentes | MCP y skill compatibles desde 3.0, con control local opcional y autenticado |
+
+[**Notas completas de 3.0, controles y alcance →**](docs/NOVEDADES-3.0.md)
+· [**MCP para agentes →**](https://github.com/Edgajuman/AKScreen-MCP)
+· [**Skill de edición →**](https://github.com/Edgajuman/AKScreen-Skill)
+
+Los análisis son cancelables y se aplican como un paso de deshacer. Si la secuencia
+cambia mientras se analiza, se conserva la edición actual y se pide repetirlo.
+La exportación usa las mismas capas y animaciones que Program.
+
+## Biblioteca, gráficos y personalización
+
+
 
 | Herramienta | Qué puedes hacer |
 |---|---|
@@ -104,8 +129,10 @@ conserva los recursos, las licencias y los créditos del tema original.
 | Crear, previsualizar o rehacer un tema | [Theme Studio](https://edgajuman.github.io/AK-Screen-Themes/theme-studio.html) |
 | Extensiones y widgets versionados | [Catálogo de extensiones](https://edgajuman.github.io/AK-Screen-Extensions/) |
 | Medios, efectos y plantillas | [Biblioteca de recursos](https://edgajuman.github.io/AKScreen-Assets/) |
+| MCP para agentes desde 3.0 | [AK Screen MCP](https://github.com/Edgajuman/AKScreen-MCP) |
+| Skill de edición | [AK Screen Editing](https://github.com/Edgajuman/AKScreen-Skill) |
 | Crear una extensión | [SDK y ejemplos](https://github.com/Edgajuman/AK-Screen-Extensions/tree/main/sdk) |
-| Publicar recursos desde tu cuenta | [GitHub App](https://github.com/apps/ak-screen-asset-publisher) · [Guía de aportes](https://github.com/Edgajuman/AKScreen-Assets/blob/main/CONTRIBUTING.md) |
+| Publicar recursos desde tu cuenta | [Guía de aportes](https://github.com/Edgajuman/AKScreen-Assets/blob/main/CONTRIBUTING.md) |
 
 ## Extensiones para tu flujo de trabajo
 
@@ -148,21 +175,15 @@ necesarios; el aislamiento no garantiza ausencia de vulnerabilidades.
 
 ## El editor en uso
 
-**Capturas reales de AK Screen 2.4.0 instalado en Windows**
+**Capturas reales de AK Screen 3.0 instalado y probado en Windows.**
 
-![Editor 2.4.0 con galería de efectos](assets/screenshots/editor-gallery-2.4.jpg)
+![Espectro musical y capas animadas en AK Screen 3.0](assets/screenshots/audio-motion-3.0.png)
 
-| Gráficos animados en la timeline | Personalización del gráfico |
+| Seguimiento de objetos | Texto, partículas y cámara |
 |---|---|
-| ![Barras, capas y timeline](assets/screenshots/charts-timeline-2.4.jpg) | ![Apariencia, fuentes y colores](assets/screenshots/charts-style-2.4.jpg) |
-| Biblioteca con colecciones | Essential Graphics descargado |
-| ![Biblioteca comunitaria](assets/screenshots/library-catalogue-2.4.jpg) | ![Plantilla descargada y controles editables](assets/screenshots/library-essential-graphics-2.4.jpg) |
-| Descargas dentro de Effects | Chat AI: vista previa del widget |
-| ![Biblioteca Descargas](assets/screenshots/effects-downloads-2.4.jpg) | ![Vista previa de conversación; mensajes de ejemplo](assets/screenshots/chat-preview-2.4.jpg) |
-| Widget flotante | Menús agrupados y desplazables |
-| ![Audio Workbench flotante](assets/screenshots/widget-floating-2.4.jpg) | ![Herramientas con scroll](assets/screenshots/tools-scroll-2.4.jpg) |
+| ![Texto vinculado al objeto seguido](assets/screenshots/tracking-3.0.png) | ![Composición y animaciones editables](assets/screenshots/composition-3.0.png) |
 
-[**Ver las 16 capturas y el detalle completo de la revisión →**](docs/NOVEDADES-2.4.md)
+[Capturas de la versión 2.4](docs/NOVEDADES-2.4.md) · [Todas las novedades de 3.0](docs/NOVEDADES-3.0.md)
 
 ## Ejemplos de uso
 
@@ -207,7 +228,6 @@ y apariencia. Arrastra las pestañas hacia el centro o los bordes para reorganiz
 los paneles y guarda tu espacio de trabajo. Los temas permiten cambiar la
 superficie, las líneas y la disposición mediante estilos nativos acotados.
 
-![Ajustes de grabación y audio](assets/screenshots/recording-settings-2.2.png)
 
 La composición transforma planos de capas; no importa modelos OBJ/glTF ni
 ofrece sombras entre objetos. Los generadores de geometría son procedurales.
@@ -219,8 +239,8 @@ La precisión de los subtítulos depende del modelo y del audio; requiere revisi
 |---|---|
 | Windows x64 | Instalador `.exe` y ZIP portable |
 | Linux x64 | Archivo `.tar.gz`, Ubuntu 24.04 o compatible |
-| macOS Apple Silicon | `.dmg` ARM64 |
-| macOS Intel | `.dmg` x64 |
+| macOS Apple Silicon | **3.0 en desarrollo** · versiones anteriores en Releases |
+| macOS Intel | **3.0 en desarrollo** · versiones anteriores en Releases |
 
 Encuentra cada paquete y sus sumas SHA-256 en [Releases](https://github.com/Edgajuman/AKScreen-Downloads/releases).
 Las versiones de Windows usan carpetas independientes y permiten elegir otra ruta.
