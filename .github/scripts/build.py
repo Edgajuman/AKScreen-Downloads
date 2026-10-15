@@ -25,6 +25,13 @@ steps = [
     ("Grabación y edición", ["cargo", "test", "--release", "--locked", "-p", "filmcraft", "--bin", "AKScreen", "--target", target, "akscreen::"]),
     ("Gráficos de datos", ["cargo", "test", "--release", "--locked", "-p", "filmcraft-project", "--lib", "--target", target, "charts::tests"]),
     ("Gráficos en timeline", ["cargo", "test", "--release", "--locked", "-p", "filmcraft-engine", "--lib", "--target", target, "charts_create_render_update_undo"]),
+    ("Motion Design y partículas", ["cargo", "test", "--release", "--locked", "-p", "filmcraft-engine", "--lib", "--target", target, "motion_design::"]),
+    ("Análisis y espectros", ["cargo", "test", "--release", "--locked", "-p", "filmcraft-engine", "--lib", "--target", target, "analysis::"]),
+    ("Seguimiento de objetos", ["cargo", "test", "--release", "--locked", "-p", "filmcraft-engine", "--lib", "--target", target, "object_tracking_bakes_follow_keys_persists_and_stabilizes"]),
+    ("Cámara y desenfoque temporal", ["cargo", "test", "--release", "--locked", "-p", "filmcraft-engine", "--lib", "--target", target, "camera::tests"]),
+    ("Caracteres animados", ["cargo", "test", "--release", "--locked", "-p", "filmcraft-render", "--lib", "--target", target, "text_motion::tests"]),
+    ("Fuentes locales", ["cargo", "test", "--release", "--locked", "-p", "filmcraft-engine", "--lib", "--target", target, "font_library::tests"]),
+    ("Control MCP autenticado", ["cargo", "test", "--release", "--locked", "-p", "filmcraft", "--bin", "AKScreen", "--target", target, "control_server::tests"]),
     ("Arquitectura", ["cargo", "xtask", "layers"]),
     ("Atribuciones", ["cargo", "xtask", "assets"]),
 ]
