@@ -35,6 +35,7 @@ if mode == 'regressions':
         ('Motion Design y partículas', ['cargo','test','--locked','--release','-p','filmcraft-engine','--lib','motion_design::']),
         ('Cámara con objetivo y desenfoque', ['cargo','test','--locked','--release','-p','filmcraft-engine','--lib','camera::tests']),
         ('Seguimiento de objetos y estabilización', ['cargo','test','--locked','--release','-p','filmcraft-engine','--lib','object_tracking_bakes_follow_keys_persists_and_stabilizes']),
+        ('Duración e inserción de gráficos', ['cargo','test','--locked','--release','-p','filmcraft-engine','--lib','graphic_duration_does_not_override_placement_at_the_playhead']),
         ('Importación persistente de fuentes', ['cargo','test','--locked','--release','-p','filmcraft-engine','--lib','font_library::tests']),
         ('Caracteres animados', ['cargo','test','--locked','--release','-p','filmcraft-render','--lib','text_motion::tests']),
         ('Simulación de partículas', ['cargo','test','--locked','--release','-p','filmcraft-render','--lib','particles::tests']),
@@ -66,6 +67,8 @@ with (Path(os.environ['RUNNER_TEMP']) / 'akscreen-build.log').open('wb' if phase
         if result.returncode:
             print(f'::error::{name} falló. Diagnóstico cifrado para el propietario.', flush=True)
             failed.append(name)
+            if mode == 'regressions':
+                break
         else:
             print(f'{name}: correcto', flush=True)
 if failed:
