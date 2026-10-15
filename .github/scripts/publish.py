@@ -15,7 +15,11 @@ version = metadata["version"]
 tag = metadata["tag"]
 if not re.fullmatch(r"\d+\.\d+\.\d+", version) or tag != "ak-v" + version:
     raise SystemExit("Invalid version")
-expected = {"windows-x64", "linux-x64", "macos-arm64", "macos-x64"}
+include_macos = os.environ.get("INCLUDE_MACOS", "true") == "true"
+expected = {"windows-x64", "linux-x64"} | ({"macos-arm64", "macos-x64"} if include_macos else set())
+metadata["platformStatus"] = {p: ("available" if p in expected else "development") for p in ("windows-x64", "linux-x64", "macos-arm64", "macos-x64")}
+if not include_macos:
+    metadata["notes"] += "\n\n## Plataformas\nWindows x64 y Linux x64 disponibles. **macOS 3.0: en desarrollo** (Apple Silicon e Intel). Las versiones anteriores de macOS permanecen en el historial.\n"
 if {p.name.removeprefix("AKScreen-") for p in Path("packages").iterdir()} != expected:
     raise SystemExit("Missing platform packages")
 flat = Path("release-assets")
@@ -66,11 +70,11 @@ before, remainder = readme.split(start_marker, 1)
 _, after = remainder.split(end_marker, 1)
 download_root = f"https://github.com/{repo}/releases/download/{tag}"
 latest = (
-    f"> **AK Screen {version} está disponible** para Windows x64, Linux x64 y macOS "
-    "(Apple Silicon e Intel). "
-    f"[Instalador de Windows]({download_root}/AKScreen-Windows-x64-Setup.exe) · "
+    (f"> **AK Screen {version} está disponible** para Windows x64 y Linux x64. "
+     + ("macOS (Apple Silicon e Intel) disponible. " if include_macos else "**macOS 3.0: en desarrollo.** "))
+    + f"[Instalador de Windows]({download_root}/AKScreen-Windows-x64-Setup.exe) · "
     f"[Paquete Linux]({download_root}/AKScreen-Linux-x64.tar.gz) · "
-    f"[Descargas para macOS y otros formatos](https://github.com/{repo}/releases/tag/{tag})."
+    f"[Todas las descargas e historial](https://github.com/{repo}/releases/tag/{tag})."
 )
 readme_path.write_text(f"{before}{start_marker}\n{latest}\n{end_marker}{after}", encoding="utf-8")
 subprocess.run(["git", "config", "user.name", "AK Screen Releases"], check=True)

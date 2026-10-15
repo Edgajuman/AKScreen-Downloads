@@ -18,6 +18,10 @@ on:
         description: Amend Windows only when changes are isolated to its native installation module
         type: boolean
         default: false
+      include_macos:
+        description: Include macOS; false publishes only verified Windows and Linux, with macOS in development
+        type: boolean
+        default: true
       base_build_run:
         description: Validated base matrix for a Windows-only amendment
         type: string
@@ -40,7 +44,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include: ${{ fromJSON(inputs.windows_only && '[{"platform":"windows","runner":"windows-2025","target":"x86_64-pc-windows-msvc","artifact":"windows-x64"}]' || '[{"platform":"windows","runner":"windows-2025","target":"x86_64-pc-windows-msvc","artifact":"windows-x64"},{"platform":"linux","runner":"ubuntu-24.04","target":"x86_64-unknown-linux-gnu","artifact":"linux-x64"},{"platform":"macos","runner":"macos-15","target":"aarch64-apple-darwin","artifact":"macos-arm64"},{"platform":"macos","runner":"macos-15-intel","target":"x86_64-apple-darwin","artifact":"macos-x64"}]') }}
+        include: ${{ fromJSON(inputs.windows_only && '[{"platform":"windows","runner":"windows-2025","target":"x86_64-pc-windows-msvc","artifact":"windows-x64"}]' || (!inputs.include_macos && '[{"platform":"windows","runner":"windows-2025","target":"x86_64-pc-windows-msvc","artifact":"windows-x64"},{"platform":"linux","runner":"ubuntu-24.04","target":"x86_64-unknown-linux-gnu","artifact":"linux-x64"}]') || '[{"platform":"windows","runner":"windows-2025","target":"x86_64-pc-windows-msvc","artifact":"windows-x64"},{"platform":"linux","runner":"ubuntu-24.04","target":"x86_64-unknown-linux-gnu","artifact":"linux-x64"},{"platform":"macos","runner":"macos-15","target":"aarch64-apple-darwin","artifact":"macos-arm64"},{"platform":"macos","runner":"macos-15-intel","target":"x86_64-apple-darwin","artifact":"macos-x64"}]') }}
     steps:
       - uses: actions/checkout@v4
       - name: Validate source revision
@@ -128,6 +132,7 @@ jobs:
           BUILD_RUN: ${{ inputs.mode == 'build' && github.run_id || inputs.build_run }}
           BASE_BUILD_RUN: ${{ inputs.base_build_run }}
           AUTOMATIC: ${{ inputs.mode == 'build' }}
+          INCLUDE_MACOS: ${{ inputs.include_macos }}
         run: |
           python3 -m unittest discover -s .github/scripts -p 'test_validate_publish.py'
           python3 .github/scripts/validate_publish.py
@@ -159,6 +164,7 @@ jobs:
           path: metadata
       - name: Publish verified installers and static catalogue
         env:
+          INCLUDE_MACOS: ${{ inputs.include_macos }}
           GH_TOKEN: ${{ github.token }}
           SOURCE_SHA: ${{ inputs.source_sha }}
         run: |
