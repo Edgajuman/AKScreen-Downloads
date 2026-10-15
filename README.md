@@ -23,7 +23,7 @@ el cursor, la cámara y los textos quedan en capas que puedes ajustar después d
 grabar. Tus proyectos, capturas y eventos se guardan en tu dispositivo.
 
 <!-- AKSCREEN-LATEST-RELEASE-START -->
-> **AK Screen 2.4.0 está disponible** para Windows x64, Linux x64 y macOS (Apple Silicon e Intel). [Instalador de Windows](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.4.0/AKScreen-Windows-x64-Setup.exe) · [Paquete Linux](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v2.4.0/AKScreen-Linux-x64.tar.gz) · [Descargas para macOS y otros formatos](https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v2.4.0).
+> **AK Screen 3.0.0 está disponible** para Windows x64 y Linux x64. **macOS 3.0: en desarrollo.** [Instalador de Windows](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v3.0.0/AKScreen-Windows-x64-Setup.exe) · [Paquete Linux](https://github.com/Edgajuman/AKScreen-Downloads/releases/download/ak-v3.0.0/AKScreen-Linux-x64.tar.gz) · [Todas las descargas e historial](https://github.com/Edgajuman/AKScreen-Downloads/releases/tag/ak-v3.0.0).
 <!-- AKSCREEN-LATEST-RELEASE-END -->
 
 | Captura | Edición | Personalización |
